@@ -3,6 +3,6 @@
 
 ## 用于上传百度前端学院各个学院做的任务，加油！
 
-### 1.2
+### 目录
 
-https://github.com/chinti/2018BaiduIFE/blob/master/MVVM/1.2/index.html
+- [1.2] (./1.2/dist/index.html)
