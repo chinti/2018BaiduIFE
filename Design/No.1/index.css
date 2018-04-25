@@ -1,0 +1,54 @@
+﻿article {
+	width:		300px;
+	margin:		auto;
+	text-align:	center;
+	text:		20px;
+	font-size:	160%;
+}
+
+p {
+		margin-bottom:	0px;
+		transition:	all .3s ease-in-out .1s;
+}
+
+p.color {
+	color:				black;
+}
+p.active {
+	color:				blue;
+}
+
+div {
+	height:				5px;
+	margin:				auto;
+	transition:	all .3s ease-in-out .1s;
+	
+}
+
+div.color {
+	background-color:	white;
+	width:				0px;
+}
+
+div.active {
+	background-color:	blue;
+	width:				140px;
+}
+
+button {
+	margin-top:			10px;
+	font-size:			80%;
+	border-radius:		5px;
+	border:				thin grey solid;
+	background-color:	white;
+	box-shadow:			1px 1px #AAA;
+
+}
+
+button:focus {
+	outline:			none;
+}
+
+button:active {
+	background-color:		#E0FFFF;
+}
