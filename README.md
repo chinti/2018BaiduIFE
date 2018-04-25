@@ -8,6 +8,9 @@
 
 ### 目录
 
+#### 基础学院
+- [第二天：给自己做一个在线简历吧](https://codepen.io/chinti/pen/VxjvoG)
+
 #### MVVM学院
 - [1.2 用parcel快速搭建开发san helloworld](./MVVM/1.2/dist/index.html)
 
