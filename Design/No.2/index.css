@@ -1,0 +1,31 @@
+﻿
+#boxContainer div {
+	width:		60px;
+	height:		60px;
+	background:	#eee;
+	border: 2px solid #ccc;
+	text-align:	center;
+	line-height: 60px;
+	float:		left;
+	margin:		25px;
+}
+
+#box1 {
+	transform:	skewX(30deg);
+}
+
+#box2 {
+	transform:	scaleX(0.5);
+}
+
+#box3 {
+	transform: rotate(45deg);
+}
+
+#box4 {
+	transform:	translate(10px,20px);
+}
+
+#box5 {
+	transform:	 scaleX(0.5) translate(10px,20px) skewX(30deg)  rotate(45deg); 
+}
