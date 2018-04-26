@@ -1,0 +1,40 @@
+﻿#container {
+	width:	250px;
+	height:	300px;
+	margin:	auto;
+	text-align:	center;
+	position:	absolute;
+	top:		50%;
+	left:		50%;
+	transform:	translate(-50%,-50%);
+	perspective:	2000px;
+}
+
+
+
+#front,#back {
+	position:	absolute;
+	top: 0;
+	left: 0;
+	transition:	all .9s ;
+	transform-style:	preserved-3d;
+}
+
+#front {
+	z-index:	3;
+}
+
+#back {
+	z-index:	2;
+	transform:		rotateY(-180deg);
+}
+
+#container:hover #front {
+	z-index:		2;
+	transform:		rotateY(180deg);
+}
+
+#container:hover #back {
+	z-index:		3;
+	transform:		rotateY(0deg);
+}
