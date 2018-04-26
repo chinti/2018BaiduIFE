@@ -1,0 +1,131 @@
+﻿body {
+	height:			100%;
+	width:			100%;
+	overflow:		hidden;
+	margin:			0;
+}
+
+.show {
+	position:		absolute;
+	top: 			0;
+	left:			0;
+	width:			100vw;
+	height:			100vh;
+	backface-visiblity: hidden;
+	z-index:		-1;
+}
+
+.choPic {
+	width:		100%;
+	position:	absolute;
+	bottom:		0;
+	text-align:	center;
+}
+
+.choBox {
+	position:	relative;
+	display:	inline-block;
+	margin:	 	0;
+	margin-bottom:	3vw;
+}
+.pic {
+	height:		16vh;
+	width:		16vw;
+	z-index:	10;
+}
+.cover {
+	display:	inline-block;
+	position:	absolute;
+	height:		100%;
+	width:		100%;
+	top:		0;
+	left:		0;
+	background:	black;
+	opacity:	0.5;
+	z-index:	20;
+}
+.choBox:hover .cover{
+	opacity:	0;
+}
+
+.active1,.active2,.active3,.active4,.active5 {
+	z-index:	0;
+}
+
+
+.active1{
+	animation: show1 .5s ease-out 0s;
+}
+.active2 {
+	animation: show2 0.5s ease-out;
+}
+.active3 {
+	animation: show3 1s ease-in;
+}
+.active4 {
+	animation: show4 1s ease-out;
+}
+.active5 {
+	animation: show5 .7s ease-in-out;
+} 
+
+@keyframes show1 {
+	from {
+		left:	-500px;
+	}
+	to{
+		left:	0px;
+	}
+}
+
+@keyframes show2 {
+	from {
+		top:	350px;
+	}
+	to{
+		top:	0px;
+	}
+}
+
+@keyframes show3 {
+	from {
+		transform:	scale(0.1);
+	}
+	to{
+		transform:	scale(1.0);
+	}
+}
+
+@keyframes show4 {
+	from {
+		transform:	scale(2.0);
+	}
+	to {
+		transform:	scale(1.0);
+	}
+}
+
+@keyframes show5 {
+	from {
+		transform:	rotate(-360deg) scale(0.1);
+	}
+	to {
+		transform:	rotate(0deg) scale(1.0);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
