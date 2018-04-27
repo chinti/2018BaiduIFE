@@ -55,21 +55,35 @@
 
 .active1{
 	animation: show1 .5s ease-out 0s;
+	-webkit-animation: show1 .5s ease-out 0s;
 }
 .active2 {
 	animation: show2 0.5s ease-out;
+	-webkit-animation: show2 0.5s ease-out;
 }
 .active3 {
 	animation: show3 1s ease-in;
+	-webkit-animation: show3 1s ease-in;
 }
 .active4 {
 	animation: show4 1s ease-out;
+	-webkit-animation: show4 1s ease-out;
 }
 .active5 {
 	animation: show5 .7s ease-in-out;
+	-webkit-animation: show5 .7s ease-in-out;
 } 
 
 @keyframes show1 {
+	from {
+		left:	-500px;
+	}
+	to{
+		left:	0px;
+	}
+}
+
+@-webkit-keyframes show1 {
 	from {
 		left:	-500px;
 	}
@@ -87,32 +101,81 @@
 	}
 }
 
+@-webkit-keyframes show2 {
+	from {
+		top:	350px;
+	}
+	to{
+		top:	0px;
+	}
+}
+
+
 @keyframes show3 {
 	from {
 		transform:	scale(0.1);
+		-webkit-transform:	scale(0.1);
 	}
 	to{
 		transform:	scale(1.0);
+		-webkit-transform:	scale(1.0);
+	}
+}
+
+@-webkit-keyframes show3 {
+	from {
+		transform:	scale(0.1);
+		-webkit-transform:	scale(0.1);
+	}
+	to{
+		transform:	scale(1.0);
+		-webkit-transform:	scale(1.0);
 	}
 }
 
 @keyframes show4 {
 	from {
 		transform:	scale(2.0);
+		-webkit-transform:	scale(2.0);
 	}
 	to {
 		transform:	scale(1.0);
+		-webkit-transform:	scale(1.0);
 	}
 }
+
+@-webkit-keyframes show4 {
+	from {
+		transform:	scale(2.0);
+		-webkit-transform:	scale(2.0);
+	}
+	to {
+		transform:	scale(1.0);
+		-webkit-transform:	scale(1.0);
+	}
+}
+
 
 @keyframes show5 {
 	from {
 		transform:	rotate(-360deg) scale(0.1);
+		-webkit-transform:	rotate(-360deg) scale(0.1);
 	}
 	to {
 		transform:	rotate(0deg) scale(1.0);
-	}
+		-webkit-transform:	rotate(0deg) scale(1.0);
 }
+
+@-webkit-keyframes show5 {
+	from {
+		transform:	rotate(-360deg) scale(0.1);
+		-webkit-transform:	rotate(-360deg) scale(0.1);
+	}
+	to {
+		transform:	rotate(0deg) scale(1.0);
+		-webkit-transform:	rotate(0deg) scale(1.0);
+}
+
 
 
 
