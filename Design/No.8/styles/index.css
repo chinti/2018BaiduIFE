@@ -1,0 +1,58 @@
+﻿body {
+	width:		100vw;
+	height:		100vh;
+	background-color:	#102131;
+	text-align:	center;
+}
+
+.stage{
+	width:		500px;
+	height:		400px;
+	margin:		auto;
+}
+
+
+.top > div {
+	width:		200px;
+	height:		200px;
+	position:	absolute;
+	top:		50px;
+	left:		75px;
+}
+
+.rectangle {
+	background-color:	white;
+	height:				500px;
+	width:				350px;
+	margin:				auto;
+	position:			relative;
+	border-radius:		6px;
+	transition:			all 0.3s ease;
+}
+.top {
+	background-color:	green;
+	height:				60%;
+	width:				100%;
+	border-radius:		6px 6px 0px 0px;
+}
+
+.rectangle:hover {
+	transform:		translateY(-5px);
+	box-shadow:		0px 0px 6px -5px grey, 
+					0px 0px 0px grey, 
+					0px 6px 10px grey, 
+					0px 2px 0px grey;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -101,8 +101,8 @@
 
 
 .cube:hover {
-	animation:	rotating 10s linear infinite;
-	-webkit-animation:	rotating 10s linear infinite;
+	animation:	rotating 10s linear infinite ;
+	-webkit-animation:	rotating 10s linear infinite ;
 }
 
 
