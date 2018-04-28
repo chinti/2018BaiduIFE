@@ -132,7 +132,7 @@
 
 			
 			
-			.form__label .line {
+			.form__label::before {
 				content:		'';
 				position:		absolute;
 				margin:			0;
@@ -144,7 +144,7 @@
 				transition:		all 0.2s ease-out;
 			}	
 			
-			.form__input:focus ~ .form__label .line {
+			.form__input:focus ~ .form__label::before {
 				width:			100%;
 			}
 			.form__label::after {
@@ -179,14 +179,12 @@
                         <input type="email" class="form__input" id="email" name="email">
                         <label class="form__label" for="email">
                         <span class="form__label__content">Email</span>
-						<div class = "line"></div>
                         </label>
                     </div>
                     <div class="form__wrapper" data-wow-delay="0.6s">
                         <input type="password" class="form__input" id="password" name="password">
                         <label class="form__label" for="password">
                         <span class="form__label__content">Password</span>
-						<div class = "line"></div>
                         </label>
                     </div>
                     <div class="form__wrapper__submit pulse infinite" data-wow-delay="0.7s">
