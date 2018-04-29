@@ -1,0 +1,36 @@
+﻿
+
+dl {
+	line-height:		25px;
+	display:			inline;
+}
+dt {
+	font-weight:		bold;
+	
+}
+dd {
+	text-indent:		-40px;
+	
+}
+
+section:nth-child(1) > dl > dt{
+	display:			inline;
+	margin-right:		4px;
+}
+
+section:nth-child(1) > dl > dd{
+	display:			inline;
+	margin:				0;
+	margin-right:		40px;
+}
+
+section:nth-child(2) > dl > dt{
+	display:			inline;
+	margin-right:		2px;
+}
+
+section:nth-child(2) > dl > dd{
+	display:			inline;
+	margin:				0;
+	margin-right:		40px;
+}

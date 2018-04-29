@@ -1,0 +1,109 @@
+﻿*{
+	margin:				0px;
+}
+body {
+	width:				1200px;
+	margin:				auto;
+}
+
+header {
+	position:			relative;
+	background-color:	grey;
+	height:				70px;
+}
+
+header h1 {
+	color:				white;
+	font-size:			1.2em;
+	position:			absolute;
+	top:				8px;
+	left:				25px;
+}
+
+section {
+	padding:			0px;
+	background:			white;
+	border-bottom:		1px solid #C0C0C0;
+	border-right:		1px solid #C0C0C0;
+}
+
+
+
+section h2 {
+	display:			inline-block;
+	width:				100px;
+	height:				100px;
+	background-color:	#C0C0C0;
+	font-size:			1em;	
+	text-align:			center;
+	line-height:		100px;
+	border-bottom:		1px solid white;
+}
+
+section dl {
+	display:			inline-block;
+}
+
+
+dl {
+	line-height:		25px;
+	display:			inline;
+}
+dt {
+	font-weight:		bold;
+	
+}
+dd {
+	text-indent:		-40px;
+	
+}
+
+section > dl {
+	position:			absolute;
+	text-align:			left;
+	transform:			translate(10px,10px);
+	-webkit-transform:	translate(10px,10px);
+}
+
+
+
+section > dl > dt {
+	float:				left;
+	display:			inline;
+}
+
+
+
+
+section > dl > dd {
+	width:				500px;
+	text-indent:		3px;
+}
+
+
+
+section:nth-child(1) > dl > dt{
+	display:			inline;
+	margin-right:		4px;
+	float:				none;
+}
+
+section:nth-child(1) > dl > dd{
+	display:			inline;
+	margin:				0;
+	margin-right:		40px;
+}
+
+section:nth-child(2) > dl > dt{
+	display:			inline;
+	margin-right:		2px;
+	float:				none;
+}
+
+section:nth-child(2) > dl > dd{
+	display:			inline;
+	margin:				0;
+	margin-right:		40px;
+}
+
+
