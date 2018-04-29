@@ -6,6 +6,11 @@
         <link rel = "stylesheet" href = "./css/style_3.css">
     </head>
     <body>
+		<nav>
+			<button>样式一</button>
+			<button>样式二</button>
+			<button>样式三</button>
+		</nav>
 	    <header><h1>简历</h1></header> 
 		<article>
 			<section>
@@ -58,5 +63,33 @@
 				</dl>
 			</section>
 		</article>
+
+		<script>
+			var btn = document.getElementsByTagName("button");
+			var link = document.getElementsByTagName("link");
+			for (let i = 0; i < btn.length ; i++){
+				btn[i].onclick = function(){
+					link[0].href = "css/style_" + (i + 1) + ".css";
+				};
+			}
+		</script>
     </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
