@@ -1,0 +1,168 @@
+﻿* {
+	box-sizing:			border-box;
+}
+body {
+	padding:	0;
+	margin:		0;
+}
+
+
+header {
+	background-color:	#333;
+	height:				85px;
+}
+
+header div {
+	max-width:			960px;
+	margin:				0 auto;
+	line-height:		4em;
+	position:			relative;
+}
+
+header h1 {
+	color:				white;
+	margin:				0;
+}
+
+
+
+.link {
+	position:			absolute;
+	top:				-10px;
+	right:				0px;
+}
+
+.link a {
+	color:				white;
+}
+
+
+input {
+	display:			none;
+}
+
+.banner {
+	background-color:	#6b3;
+	height:				300px;
+}
+
+.banner > div {
+	margin:				0 auto;
+	width:				960px;
+	position:			relative;
+}
+
+
+
+.sliderCon {
+	position:			absolute;
+	top:				260px;
+	right:				-10px;
+}
+.sliderCon label {
+	display:			inline-block;
+	width:				30px;
+	height:				30px;
+	border:				1px solid black;
+	text-align:			center;
+	line-height:		30px;
+	background-color:	white;
+	opacity:			0.5;
+}
+
+/* .sliderCon label:nth-child(2) {
+	opacity:			1;
+} */
+
+#activeSli {
+	opacity:			1;
+	height:				40px;
+	transform:			translateY(-10px);
+	-webkit-transform:			translateY(-10px);
+	-o-transform:			translateY(-10px);
+	-moz-transform:			translateY(-10px);
+}
+
+
+
+nav {
+	height:				65px;
+	border-bottom:		1px solid #eee;
+	width:				100%;
+}
+nav ul {
+	display:			block;
+	width:				960px;
+	margin:				0 auto;
+	position:			relative;
+}
+
+nav ul li {
+	display:			inline-block;
+	list-style-type:	none;
+	border:				1px solid #ddd;
+	width:				100px;
+	height:				50px;
+	margin:				0;
+	padding:			0;
+	border-radius:		20px 20px 0 0;
+	line-height:		50px;
+	text-align:			center;
+	background-color:	#eee;
+	position:			relative;
+	top:				15px;
+	left:				-40px;
+}
+
+.activeNav{
+	background-color:	white;
+	border-bottom-color:white;
+}
+
+main {
+	width:				960px;
+	margin:				0 auto;
+}
+
+.flexCon {
+	display:			flex;
+	width:				100%;
+	justify-content:	center;
+}
+
+.flexCon div {
+	flex:				1;
+	height:				200px;
+	border:				1px solid #ddd;
+	padding:			80px;
+	line-height:		40px;
+	margin-top:			10px;
+	text-align:			center;
+}
+
+.flexCon:nth-child(1) div:nth-child(2) {
+	margin:				10px 10px 0 10px;
+}
+
+.flexCon:nth-child(2) div:nth-child(2) {
+	margin:				10px 10px 0 9px;
+}
+.flexCon:nth-child(2) div:nth-child(3) {
+	margin:				10px 9px 0 0;
+}
+
+.flexCon:nth-child(3) div:nth-child(2) {
+	margin:				10px 10px 0 10px;
+}
+.flexCon:nth-child(3) div:nth-child(3) {
+	flex:				2 200px;
+}
+
+footer {
+	background-color:	#666;
+	height:				150px;
+	text-align:			center;
+	line-height:		75px;
+	color:				white;
+}
+
