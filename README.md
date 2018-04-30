@@ -11,6 +11,7 @@
 #### 基础学院
 - [第二天：给自己做一个在线简历吧](https://codepen.io/chinti/pen/VxjvoG)
 - [第五天和第六天 三种简历](./Basic/task5/resume.html)
+- [第七天到第八天：学习布局](./Basic/task7/index.html)
 
 #### MVVM学院
 - [1.2 用parcel快速搭建开发san helloworld](./MVVM/1.2/dist/index.html)
