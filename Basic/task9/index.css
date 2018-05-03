@@ -120,6 +120,7 @@ header .title > p {
 }
 #accountBox input::placeholder {
 	color:		white;
+	opacity:	0.5;
 }
 
 #part1 {
