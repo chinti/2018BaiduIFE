@@ -484,6 +484,7 @@ header .title > p {
 	margin-top:		30px;
 	padding-left:	20px;
 	padding-top:	20px;
+	width:			475px;
 	resize:			none;
 	border:			2px solid #eee;
 }
