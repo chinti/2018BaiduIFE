@@ -13,6 +13,13 @@ header {
 	height:			1200px;
 }
 
+header #background1 {
+	height:		1280px;
+	width:		1900px;
+	position:	relative;
+	overflow:	hidden;
+}
+
 header img {
 	height:		1280px;
 	position:	absolute;
@@ -24,8 +31,8 @@ header img {
 
 #cover1 {
 	height:		1280px;
-	width:		100%;
 	z-index:	-1;
+	width:		100%;
 	background-color:	black;
 	opacity:	0.5;
 	position:	absolute;
@@ -37,7 +44,7 @@ header .title h1 {
 	font-weight:	lighter;
 	font-size:		4.5em;
 	position:		relative;
-	top:			200px;
+	top:			-1080px;
 	transform:		scaleX(1.1);
 	-webkit-transform:		scaleX(1.1);
 	-o-transform:		scaleX(1.1);
@@ -54,7 +61,7 @@ header .title > p {
 	-moz-transform:		scaleX(1.1);
 	font-weight:	lighter;
 	position:		relative;
-	top:			250px;
+	top:			-1030px;
 	opacity:		0.5;
 }
 
@@ -69,7 +76,7 @@ header .title > p {
 	border:			1px solid rgb(255,255,255,0.5);
 	margin:			0 auto;
 	position:		relative;
-	top:			350px;
+	top:			-930px;
 	border-radius:	3px;
 	z-index:		1;
 }
@@ -172,17 +179,19 @@ header .title > p {
 
 
 #part2 {
-	height:			950px;
+	height:			960px;
 	position:		relative;
+	width:			1900px;
+	overflow:		hidden;
 }
 
 #part2 > img {
-	height:			950px;
+	height:			960px;
 	z-index:		-2;
 }
 
 #part2 #cover2 {
-	height:			950px;
+	height:			960px;
 	z-index:		0;
 	background-color:	black;
 	opacity:		0.5;
@@ -198,7 +207,7 @@ header .title > p {
 	height:			750px;
 	width:			800px;
 	top:			100px;
-	left:			1100px;
+	left:			1120px;
 }
 
 #ipad > img {
@@ -533,6 +542,7 @@ header .title > p {
 
 footer {
 	height:			500px;
+	width:			1900px;
 	background-color:	black;
 }
 
