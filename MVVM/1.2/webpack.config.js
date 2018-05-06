@@ -41,6 +41,7 @@ const config = {
     ]
   }, 
   resolve: {
+		extensions: ['.js', '.san'],
         alias: {
             san: process.env.NODE_ENV === 'production'
                 ? 'san/dist/san.js'
