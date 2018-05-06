@@ -15,7 +15,7 @@
 - [第九天到第十一天：来做一个漂亮的网站](./Basic/task9/index.html)
 
 #### MVVM学院
-- [1.2 用parcel快速搭建开发san helloworld](./MVVM/1.2/dist/index.html)（重新做）
+- [1.2 用webpack4.0快速搭建开发san helloworld](./MVVM/1.2/dist/index.html)（重新做）
 
 
 #### 设计师学院
