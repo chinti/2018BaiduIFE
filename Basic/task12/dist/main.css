@@ -683,6 +683,9 @@ nav #goal #progress_bar #fill {
 	border:		1px solid #ddd;
 	border-radius:	0 6px 6px 0;
 	width:		80%;
+	padding-left:	20px;
+	font-weight:	lighter;
+	color:			#444;
 }
 
 .chat_item .images {
