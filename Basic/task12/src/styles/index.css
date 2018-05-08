@@ -25,7 +25,7 @@ aside {
 	min-width:			100px;
 	background-color:		#1d2531;
 	height:			100vh;
-	overflow:		hidden;
+	overflow:		scroll;
 }
 
 nav {
@@ -33,9 +33,9 @@ nav {
 	min-width:		300px;
 	background-color:		#222c3c;
 	height:			100vh;
-	overflow:		hidden;
+	overflow:		auto;
 }
-
+::-webkit-scrollbar {display:none}
 #main {
 	min-width:		400px;
 	flex:			200px 1;
@@ -370,6 +370,10 @@ nav #goal #progress_bar #fill {
 	position:	relative;
 }
 
+#conver_list {
+	overflow:		auto;
+}
+
 .con_item .con_face {
 	position:	absolute;
 	left:		30px;
@@ -482,6 +486,7 @@ nav #goal #progress_bar #fill {
 	display:		flex;
 	overflow:		hidden;
 	flex-direction:	column;
+	position:		relative;
 }
 
 #chat_setting {
@@ -575,7 +580,7 @@ nav #goal #progress_bar #fill {
 
 #chat_content {
 	display:		flex;
-	overflow:		hidden;
+	overflow:		auto;
 	flex-direction:	column;
 	position:		relative;
 	flex:			1;
@@ -587,7 +592,7 @@ nav #goal #progress_bar #fill {
 	position:		relative;
 	width:			100%;
 }
-.chat_item:nth-child(2) {
+.chat_item:nth-child(1) {
 	border-top:		none;
 }
 .messager_item,.user_item {
