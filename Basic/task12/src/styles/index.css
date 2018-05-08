@@ -1,0 +1,697 @@
+* {
+	box-sizing:	border-box;
+	margin:		0;
+	padding:	0;
+}
+
+/*各模块总体设计*/
+
+
+body {
+	background-color: white;
+	height:			100%;
+	width:			100%;
+	min-width:		900px;
+}
+
+#app {
+	display:		flex;
+	flex-direction:	row;
+	height:			100vh;
+}
+
+aside {
+	min-width:			100px;
+	background-color:		#1d2531;
+	height:			100vh;
+	overflow:		hidden;
+}
+
+nav {
+	max-width:			300px;
+	min-width:		300px;
+	background-color:		#222c3c;
+	height:			100vh;
+	overflow:		hidden;
+}
+
+#main {
+	min-width:		400px;
+	flex:			200px 1;
+	height:			100vh;
+	display:		flex;
+	flex-direction:	column;
+}
+#main > header {
+	width:			100%;
+	min-height:			90px;
+	border-bottom:	1px solid #DDD;
+}
+
+#content {
+	display:		flex;
+	flex:			1;
+	flex-direction:	row;
+}
+#conversation {
+	min-width:		400px;
+	border-right:	1px solid #DDD;
+}
+
+#chatting {
+	flex:			1;
+}
+
+input[type = "button"] {
+	outline:		none;
+}
+
+
+/*aside 部分*/
+
+
+aside .highlight {
+	height:		60px;
+	width:		100px;
+	position:	fixed;
+	left:		0;
+}
+
+.figure {
+	height:		60px;
+	width:		60px;
+	text-align:	center;
+	position:	relative;
+	left:		20px;
+}
+
+aside .highlight:nth-child(1){
+	top:		20px;
+}
+
+aside .highlight:nth-child(2){
+	top:		100px;
+}
+
+aside .highlight:nth-child(3){
+	top:		180px;
+}
+
+aside .highlight:nth-child(4){
+	top:		260px;
+}
+
+aside .highlight:nth-child(1) >.figure{
+	background:	url("../asserts/base_blue.png") no-repeat;
+}
+
+aside .highlight:nth-child(2) >.figure{
+	background:	url("../asserts/base_purple.png") no-repeat;
+}
+
+aside .highlight:nth-child(3) >.figure{
+	background:	url("../asserts/base_red.png") no-repeat;
+}
+aside .highlight:nth-child(4) >.figure{
+	background:	url("../asserts/base_black_circle.png") no-repeat;
+}
+
+.figure img {
+	position:	relative;
+}
+
+.highlight:nth-child(1) .figure img {
+	top:		18px;
+}
+
+.highlight:nth-child(2) .figure img {
+	top:		12.5px;
+}
+
+.highlight:nth-child(3) .figure img {
+	top:		18px;
+}
+.highlight:nth-child(4) .figure img {
+	top:		20px;
+}
+
+.highlight_active {
+	background:		center left url("../asserts/active_highlight.png") no-repeat;
+}
+
+aside input {
+	border:		none;
+	width:		20px;
+	height:		20px;
+	position:	fixed;
+	bottom:		20px;
+}
+
+input[name = "grid"] {
+	background:	url("../asserts/grid.png") no-repeat;
+	left:		20px;
+}
+
+input[name = "settings"] {
+	background:	url("../asserts/settings.png") no-repeat;
+	left:		60px;
+}
+
+/* 导航栏部分 */
+
+
+nav .container {
+	width:		100%;
+}
+
+nav .title {
+	width:		100%;
+	padding:	20px;
+	display:	flex;
+	display-direction:	row;
+}
+
+.title p {
+	color:		#353f50;
+	width:		100%;
+}
+nav input {
+	border:		none; 
+	width:		20px;
+	height:		20px;
+	background:	url("../asserts/settings.png") no-repeat;
+}
+
+.con_list ul li {
+	list-style:	none;
+	color:		#666f7e;
+	margin-bottom:	20px;
+	display:	inline-block;
+	width:		100%;
+	position:	relative;
+	padding-left:	20px;
+}
+
+
+
+nav span {
+	display:			inline-block;
+	height:				25px;
+	width:				35px;
+	position:			absolute;
+	right:				20px;
+	text-align:			center;
+	line-height:		25px;
+	color:				white;
+}
+
+nav .alert {
+	background:			center url("../asserts/long_alert.png") no-repeat;
+}
+
+nav .warn {
+	background:			center url("../asserts/short_warn.png") no-repeat;
+}
+
+nav .container .line {
+	background-color:	#353f50;
+	margin-left:		20px;
+	margin-right:		20px;
+	height:				1px;
+	width:				260px;
+}
+
+nav #goal {
+	position:			fixed;
+	bottom:				30px;
+	left:				120px;
+	width:				260px;
+}
+
+nav #goal p {
+	display:			inline;
+	color:				white;
+}
+
+nav #goal p:nth-child(2) {
+	position:			absolute;
+	right:				0;
+}
+
+nav #goal #progress_bar {
+	width:				100%;
+	background:			#353f50;
+	height:				5px;
+	border-radius:		5px;
+	margin-top:			20px;
+}
+
+nav #goal #progress_bar #fill {
+	background:		url("../asserts/fill.png") no-repeat;
+	height:			5px;
+	background-size:	20%;
+}
+
+/* 主要聊天框部分 */
+
+/* 头部显示 */
+
+#main header h2 {
+	font-weight:		normal;
+	margin-left:		30px;
+	line-height:		80px;
+}
+
+#user {
+	position:			fixed;
+	right:				150px;
+	top:				20px;
+}
+
+#user_image {
+	background:		url("../asserts/user_face.png") no-repeat;
+	width:			50px;
+	height:			50px;
+	border-radius:	50px;
+}
+#user_status {
+	background-color:	white;
+	width:			20px;
+	height:			20px;
+	border-radius:	20px;
+	position:		relative;
+	top:			30px;
+	left:			30px;
+}
+
+#user_status > div {
+	background:		white;
+	width:			14px;
+	height:			14px;
+	border:			3px solid #3cc453;
+	border-radius:	10px;
+	position:		relative;
+	top:			3px;
+	left:		3px;
+}
+#user_message {
+	height:		30px;
+	width:		80px;
+	position:	relative;
+	top:		-50px;
+	left:		70px;
+}
+
+#user_message p:nth-child(1) {
+	color:		#2399f1;
+	font-weight: bold;
+}
+
+#user_message p:nth-child(2) {
+	color:		#ddd;
+}
+
+#user input[name = "user"] {
+	border:		none;
+	width:		20px;
+	height:		20px;
+	background:	url("../asserts/dropdown.png") no-repeat;
+	position:	relative;
+	top:		-60px;
+	left:		200px;
+}
+
+/* 会话和搜索栏 */
+
+
+#conversation {
+	display:		flex;
+	overflow:		hidden;
+	flex-direction:	column;
+}
+
+
+#conversation #con_search {
+	height:			60px;
+	border-bottom:	1px solid #ddd;
+	width:			100%;
+	text-align:		center;
+	position:		relative;
+}
+
+#con_search input[type = "text"] {
+	width:			340px;
+	height:			34px;
+	border-radius:	5px;
+	border:			1px solid #ddd;
+	margin-top:		13px;
+	margin-bottom:	13px;
+	padding-left:	20px;
+}
+
+#con_search input[type = "text"]::placeholder {
+	color:			#AAA;
+}
+
+#con_search input[type = "submit"] {
+	position:		absolute;
+	top:			20px;
+	right:			40px;
+	background:	 	center url("../asserts/search_icon.png") no-repeat;
+	border:			none;
+	height:			20px;
+	width:			20px;
+}
+
+#conver_list .con_item {
+	height:		 140px;
+	border-bottom:	1px solid #ddd;
+	position:	relative;
+}
+
+.con_item .con_face {
+	position:	absolute;
+	left:		30px;
+	top:		20px;
+	height:		50px;
+	width:		50px;
+	border-radius:	50px;
+}
+
+.con_item .con_status {
+	position:	absolute;
+	left:		100px;
+	top:		30px;
+}
+.con_item .con_status p:nth-child(2) {
+	font-weight:	bold;
+	color:			#555;
+	position:		absolute;
+	width:			150px;
+}
+
+.con_item .con_status p:nth-child(3) {
+	font-weight:	bold;
+	color:			#7f8fa4;
+	font-size:		0.8em;
+	position:		absolute;
+	right:			-280px;
+	top:			3px;
+}
+
+.con_item .con_status p:nth-child(4) {
+	font-weight:	bold;
+	color:			#ccc;
+	font-size:		0.8em;
+	position:		absolute;
+	top:			25px;
+}
+.con_item .con_message {
+	width:			330px;
+	font-size:		0.6em;
+	position:		absolute;
+	top:			85px;
+	left:			30px;
+	color:			grey;
+}
+
+.con_item:nth-child(1) .con_face {
+	background:	url("../asserts/face1.png") no-repeat;
+	background-position:	50% 30%;
+}
+
+.con_item:nth-child(2) .con_face {
+	background:	url("../asserts/face2.png") no-repeat;
+	background-position:	50% 30%;
+}
+
+.con_item:nth-child(3) .con_face {
+	background:	url("../asserts/face3.png") no-repeat;
+	background-position:	50% 30%;
+}
+
+.con_item:nth-child(4) .con_face {
+	background:	url("../asserts/face4.png") no-repeat;
+	background-position:	50% 30%;
+}
+
+.con_item:nth-child(5) .con_face {
+	background:	url("../asserts/face5.png") no-repeat;
+	background-position:	50% 30%;
+}
+
+.con_item:nth-child(6) .con_face {
+	background:	url("../asserts/face6.png") no-repeat;
+	background-position:	50% 30%;
+}
+.con_item:nth-child(7) .con_face {
+	background:	url("../asserts/face7.png") no-repeat;
+	background-position:	50% 30%;
+}
+
+.active_messager .circle {
+	background-color:		#2399f1;
+	height:					10px;
+	width:					10px;
+	border-radius:			10px;
+	position:				absolute;
+	top:					5px;
+}
+.active_messager .con_status p:nth-child(2) {
+	padding-left:			20px;
+	color:					#2399f1;
+}
+
+.active_messager span {
+	display:			block;
+	width:				25px;
+	height:				25px;
+	background:	url("../asserts/short_alert.png") no-repeat;
+	position:			absolute;
+	top:				90px;
+	left:				360px;
+	color:				white;
+	text-align:			center;
+	line-height:		23px;
+	font-size:			0.8em;
+}
+
+/* 聊天框与选项 */
+#chatting {
+	display:		flex;
+	overflow:		hidden;
+	flex-direction:	column;
+}
+
+#chat_setting {
+	min-height:			60px;
+	border-bottom:	1px solid #ddd;
+	width:			100%;
+	position:		relative;		
+}
+
+#chat_button {
+	height:			30px;
+	width:			120px;
+	text-align:		center;
+	position:		absolute;
+	right:			160px;
+	top:			13px;
+	border-right:	1px solid #ddd;
+}
+
+#chat_button input,#page_button input {
+	height:			30px;
+	width:			30px;
+	outline:		none;
+	border:			none;
+	margin:			0;
+	padding:		0;
+	border:			1px solid #ddd;
+}
+
+#chat_button input[name = "add_user"] {
+	background:	center url("../asserts/user_icon.png") no-repeat;
+	position:	relative;
+	left:		6px;
+	border-radius: 6px 0px 0px 6px ;
+}
+
+#chat_button input[name = "upload"] {
+	background:	center url("../asserts/upload_icon.png") no-repeat;
+}
+#chat_button input[name = "trash"] {
+	background:	center url("../asserts/trash_icon.png") no-repeat;
+	position:	relative;
+	left:		-5px;
+	border-radius:	0px 6px 6px 0px;
+}
+
+#page_button {
+	height:			30px;
+	width:			120px;
+	text-align:		center;
+	position:		absolute;
+	right:			0px;
+	top:			13px;
+}
+
+#page_button input[name = "p_page"] {
+	background:	center url("../asserts/arrow_left.png") no-repeat;
+	border-radius:	 6px 0 0 6px ;
+}
+#page_button input[name = "n_page"] {
+	background:	center url("../asserts/arrow_right.png") no-repeat;
+	position:	relative;
+	left:		-5px;
+	border-radius:	0px 6px 6px 0px;
+}
+
+#chat_setting p:nth-child(3) {
+	position:		absolute;
+	right:			100px;
+	top:			20px;
+	color:			#666f7e;
+	font-weight:	bold;
+}
+
+#chat_setting p:nth-child(1) {
+	position:		absolute;
+	top:			20px;
+	left:			30px;
+	color:			#555;
+	font-weight:	bold;
+}
+
+#chat_content {
+	display:		flex;
+	overflow:		hidden;
+	flex-direction:	column;
+	position:		relative;
+	flex:			1;
+}
+
+.chat_item {
+	border-top:	1px solid #ddd;
+	padding:		10px;
+	position:		relative;
+	width:			100%;
+}
+.chat_item:nth-child(2) {
+	border-top:		none;
+}
+.messager_item,.user_item {
+	margin:		10px 10px 10px 80px;
+	position:		relative;
+}
+
+.messager_item p:nth-child(2),.user_item p:nth-child(2) {
+	color:			#555;
+	font-weight:	bold;
+	display:		inline;
+}
+
+.messager_item p:nth-child(3),.user_item p:nth-child(3) {
+	color:			#666f7e;
+	font-weight:	bold;
+	display:		inline;
+	margin-left:	20px;
+}
+
+.messager_item p:nth-child(4),.user_item p:nth-child(4) {
+	font-weight:	lighter;
+	line-height:	1.5em;
+	font-size:		0.9em;
+}
+
+.messager_item .item_face,.user_item .item_face {
+	width:			50px;
+	height:			50px;
+	border-radius:	50px;
+	position:		absolute;	
+	left:			-70px;
+}
+.messager_item .item_face {
+	background:	center url("../asserts/face1.png") no-repeat;
+	background-position:	50% 30%;
+}
+.user_item .item_face {
+	background:	center url("../asserts/user_face.png") no-repeat;
+	background-position:	50% 30%;
+}
+.chat_item .date {
+	text-align:			center;
+	height:				0px;
+}
+.chat_item .date p {
+	position:			relative;
+	top:				-20px;
+	background-color:	white;
+	width:				200px;
+	margin:				0 auto;
+}
+
+.chat_item:last-child .date {
+	color:				#2399f1;
+}
+.chat_item:last-child  {
+	border-color:				#2399f1;
+	flex:					1;
+
+}
+
+#chat_input {
+	position:			absolute;
+	height:				50px;
+	background:			none;
+	z-index:			10;
+	margin:				0 auto;
+	bottom:				20px;
+	width:				100%;
+	left:				30px;
+}
+
+#chat_input div {
+	width:				50px;
+	height:				50px;
+	background:			center url("../asserts/add_icon_base.png") no-repeat;
+	border-radius:	6px 0 0 6px;
+}
+
+#chat_input input[name = "chat_add"] {
+	background:	center url("../asserts/add_icon.png") no-repeat;
+	border:		1px solid #ddd;
+	width:		50px;
+	height:		50px;
+	border-radius:	6px 0 0 6px;
+}
+#chat_input input[name = "chat_text"]{
+	height:		50px;
+	position:	relative;
+	top:		-50px;
+	left:		49px;
+	background:	white;
+	border:		1px solid #ddd;
+	border-radius:	0 6px 6px 0;
+	width:		80%;
+}
+
+.chat_item .images {
+	background:	center url("../asserts/photo1.png") no-repeat;
+	height:	80px;
+	width:	150px;
+	border-radius:	6px;
+	margin-top:	10px;
+	margin-right:10px;
+	display: inline-block;
+}
+.chat_item .images:nth-child(6) {
+	background:	center url("../asserts/photo2.png") no-repeat;
+}
+.chat_item .images:hover > .cover {
+	height:	80px;
+	width: 150px;
+	opacity:	0.5;
+	background:	black;
+	border-radius:	6px;
+}
