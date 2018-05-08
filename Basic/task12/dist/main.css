@@ -4,7 +4,7 @@
 	padding:	0;
 }
 
-/*��ģ���������*/
+/*各模块总体设计*/
 
 
 body {
@@ -67,7 +67,7 @@ input[type = "button"] {
 }
 
 
-/*aside ����*/
+/*aside 部分*/
 
 
 aside .highlight {
@@ -157,7 +157,7 @@ input[name = "settings"] {
 	left:		60px;
 }
 
-/* ���������� */
+/* 导航栏部分 */
 
 
 nav .container {
@@ -252,9 +252,9 @@ nav #goal #progress_bar #fill {
 	background-size:	20%;
 }
 
-/* ��Ҫ����򲿷� */
+/* 主要聊天框部分 */
 
-/* ͷ����ʾ */
+/* 头部显示 */
 
 #main header h2 {
 	font-weight:		normal;
@@ -321,7 +321,7 @@ nav #goal #progress_bar #fill {
 	left:		200px;
 }
 
-/* �Ự�������� */
+/* 会话和搜索栏 */
 
 
 #conversation {
@@ -476,7 +476,7 @@ nav #goal #progress_bar #fill {
 	font-size:			0.8em;
 }
 
-/* �������ѡ�� */
+/* 聊天框与选项 */
 #chatting {
 	display:		flex;
 	overflow:		hidden;
@@ -547,12 +547,21 @@ nav #goal #progress_bar #fill {
 	border-radius:	0px 6px 6px 0px;
 }
 
-#chat_setting p:nth-child(3) {
+#chat_setting p:nth-child(4) {
 	position:		absolute;
 	right:			100px;
 	top:			20px;
 	color:			#666f7e;
 	font-weight:	bold;
+}
+#chat_setting .greencircle {
+	width:			8px;
+	height:			8px;
+	background-color:	#3cc453;
+	border-radius:	8px;
+	position:		relative;
+	top:			27px;
+	left:			150px;
 }
 
 #chat_setting p:nth-child(1) {
@@ -691,7 +700,26 @@ nav #goal #progress_bar #fill {
 .chat_item .images:hover > .cover {
 	height:	80px;
 	width: 150px;
-	opacity:	0.5;
-	background:	black;
+	background:		rgb(0,0,0,0.5);
 	border-radius:	6px;
+}
+
+
+.chat_item .images:hover > .cover > .enlarge {
+	height:	40px;
+	width: 40px;
+	background-color:	rgb(255,255,255,0.5);
+	border-radius:	40px;
+	z-index:	11;
+	position:	relative;
+	left:		55px;
+	top:		20px;
+}
+.chat_item .images:hover > .cover > .enlarge>.open {
+	height:	40px;
+	width: 40px;
+	border-radius:	40px;
+	z-index:	11;
+	position:	relative;
+	background:	center url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAFo9M/3AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDplNTQ1MzRlYi0zNTgyLTRkOGMtODc1My0zYTliM2QwYzFmYzkiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RUU3ODYyQzI1MTFCMTFFODhFMkFDMjM4NTQzMkVFOEEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RUU3ODYyQzE1MTFCMTFFODhFMkFDMjM4NTQzMkVFOEEiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpmNDk3OTc2NC0xNWUwLTRlZTAtYWZkNC0yYjljY2I0OTg5ZTQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6ZTU0NTM0ZWItMzU4Mi00ZDhjLTg3NTMtM2E5YjNkMGMxZmM5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+I4XSSAAAAXRJREFUeNpi/P//PwMQXGQAMi6DOAABBGK0gRiMUKn/AAEEEukCcaD4P0IGCgACCCbzHYhFYYasBeLDMG0gwvY/BIAFmIC6pKC6XwCxKEAAwcz4B8RrgJgDiO2hOgJBcixAVT+AmBOI9wDxd6huRqhLGEEKlKCKGBkQoBGIXyI7ExsGOfs/QADBOJJAfAWIv8HCAtkbkVBH2QAxJxBvgDoargDZJFgAbAbienQFMABSJAjEr2ABw4DkNRCwBWJTIL4N88VnIK5G8wEICCBH3Ccg5kUy7RYQ/wJiXZgCbOAKEP8ECDBkY+Oh1uECn6BBwoAeTrJA/AWqqABPyFdA1XwEYhFkA65AJWyxePQ/mpgrVOwksgHfoYIcSJGBDo5A5QSh/NfIBrRCBTeg2XYYSSMDNEPsgqotRTYAll7+QSW3ALEzEPND48odiHcgueY6LAMhGwDDEtA0dArqTBA+CsRlUMNEkcIMRIvii2d8QBSIdwDxbwBOlKJ5+uzFOQAAAABJRU5ErkJggg==) no-repeat;
 }

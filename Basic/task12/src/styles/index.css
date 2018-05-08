@@ -4,7 +4,7 @@
 	padding:	0;
 }
 
-/*¸÷Ä£¿é×ÜÌåÉè¼Æ*/
+/*å„æ¨¡å—æ€»ä½“è®¾è®¡*/
 
 
 body {
@@ -67,7 +67,7 @@ input[type = "button"] {
 }
 
 
-/*aside ²¿·Ö*/
+/*aside éƒ¨åˆ†*/
 
 
 aside .highlight {
@@ -157,7 +157,7 @@ input[name = "settings"] {
 	left:		60px;
 }
 
-/* µ¼º½À¸²¿·Ö */
+/* å¯¼èˆªæ éƒ¨åˆ† */
 
 
 nav .container {
@@ -252,9 +252,9 @@ nav #goal #progress_bar #fill {
 	background-size:	20%;
 }
 
-/* Ö÷ÒªÁÄÌì¿ò²¿·Ö */
+/* ä¸»è¦èŠå¤©æ¡†éƒ¨åˆ† */
 
-/* Í·²¿ÏÔÊ¾ */
+/* å¤´éƒ¨æ˜¾ç¤º */
 
 #main header h2 {
 	font-weight:		normal;
@@ -321,7 +321,7 @@ nav #goal #progress_bar #fill {
 	left:		200px;
 }
 
-/* »á»°ºÍËÑË÷À¸ */
+/* ä¼šè¯å’Œæœç´¢æ  */
 
 
 #conversation {
@@ -476,7 +476,7 @@ nav #goal #progress_bar #fill {
 	font-size:			0.8em;
 }
 
-/* ÁÄÌì¿òÓëÑ¡Ïî */
+/* èŠå¤©æ¡†ä¸Žé€‰é¡¹ */
 #chatting {
 	display:		flex;
 	overflow:		hidden;
@@ -547,12 +547,21 @@ nav #goal #progress_bar #fill {
 	border-radius:	0px 6px 6px 0px;
 }
 
-#chat_setting p:nth-child(3) {
+#chat_setting p:nth-child(4) {
 	position:		absolute;
 	right:			100px;
 	top:			20px;
 	color:			#666f7e;
 	font-weight:	bold;
+}
+#chat_setting .greencircle {
+	width:			8px;
+	height:			8px;
+	background-color:	#3cc453;
+	border-radius:	8px;
+	position:		relative;
+	top:			27px;
+	left:			150px;
 }
 
 #chat_setting p:nth-child(1) {
@@ -691,7 +700,26 @@ nav #goal #progress_bar #fill {
 .chat_item .images:hover > .cover {
 	height:	80px;
 	width: 150px;
-	opacity:	0.5;
-	background:	black;
+	background:		rgb(0,0,0,0.5);
 	border-radius:	6px;
+}
+
+
+.chat_item .images:hover > .cover > .enlarge {
+	height:	40px;
+	width: 40px;
+	background-color:	rgb(255,255,255,0.5);
+	border-radius:	40px;
+	z-index:	11;
+	position:	relative;
+	left:		55px;
+	top:		20px;
+}
+.chat_item .images:hover > .cover > .enlarge>.open {
+	height:	40px;
+	width: 40px;
+	border-radius:	40px;
+	z-index:	11;
+	position:	relative;
+	background:	center url("../asserts/open_icon.png") no-repeat;
 }
