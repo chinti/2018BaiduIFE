@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>IFE ECMAScript</title>
+</head>
+<body>
+    <h1>Demo</h1>
+    <p id="content-wrapper">你是谁？</p>
+    <input id="name-input" type="text" placeholder="输入你的名字">
+    <button id="send-btn">发送</button>
+	<br/>
+	<input id="first-number" type="number" value="0" placeholder="第一个数字">
+    <input id="second-number" type="number" value="0" placeholder="第二个数字">
+    <button id="add-btn">加</button>
+    <button id="minus-btn">减</button>
+    <button id="times-btn">乘</button>
+    <button id="divide-btn">除</button>
+    <p id="result">运算结果</p>
+    <script>        
+        document.getElementById("send-btn").onclick = function() {
+            document.getElementById("content-wrapper").innerHTML = 'Hello ' + document.getElementById("name-input").value;
+        }
+		
+		var	buttons = document.getElementsByTagName("button");
+		var result = document.getElementById("result");
+		for (let i = 1;i<buttons.length;i++) {
+			buttons[i].onclick = function() {
+				var x = parseInt(document.getElementById("first-number").value);
+				var y = parseInt(document.getElementById("second-number").value);
+				switch(buttons[i].id)  {
+					case "add-btn" :
+						result.innerHTML = x + y;
+						break;
+					case "minus-btn" :
+						result.innerHTML = x - y;
+						break;
+					case "times-btn" :
+						result.innerHTML = x * y;
+						break;
+					case "divide-btn" :
+						result.innerHTML = x / y;
+						break;
+				}
+			}
+		}
+		console.log(buttons.length);
+    </script>
+</body>
+</html>

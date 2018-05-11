@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>IFE ECMAScript</title>
+</head>
+<body>
+    <h1>Demo</h1>
+    <p id="content-wrapper">你是谁？</p>
+    <input id="name-input" type="text" placeholder="输入你的名字">
+    <button id="send-btn">发送</button>
+	<br/>
+	<input id="first-number" type="number" value="0" placeholder="第一个数字">
+    <input id="second-number" type="number" value="0" placeholder="第二个数字">
+    <button id="add-btn">加</button>
+    <button id="minus-btn">减</button>
+    <button id="times-btn">乘</button>
+    <button id="divide-btn">除</button>
+    <p id="result1">运算结果</p>
+	<input id="dec-number" type="number" placeholder="输入一个十进制非负整数">
+	<input id="bin-bit" type="number" placeholder="输入转化后二进制数字位数">
+    <button id="trans-btn">转化为二进制</button>
+    <p id="result2">运算结果</p>
+	<button id = "hello-btn">点击问好</button>
+	<p id = "result3">问好结果</p>
+	<table></table>
+    <script>        
+        document.getElementById("send-btn").onclick = function() {
+            document.getElementById("content-wrapper").innerHTML = 'Hello ' + document.getElementById("name-input").value;
+        }
+		
+		var	buttons = document.getElementsByTagName("button");
+		var result1 = document.getElementById("result1");
+		for (let i = 1;i<buttons.length;i++) {
+			buttons[i].onclick = function() {
+				var x = parseInt(document.getElementById("first-number").value);
+				var y = parseInt(document.getElementById("second-number").value);
+				var dec_num = document.getElementById("dec-number").value;
+				var lens = document.getElementById("bin-bit").value;
+				
+				switch(buttons[i].id)  {
+					case "add-btn" :
+						result1.innerHTML = x + y;
+						break;
+					case "minus-btn" :
+						result1.innerHTML = x - y;
+						break;
+					case "times-btn" :
+						result1.innerHTML = x * y;
+						break;
+					case "divide-btn" :
+						if(y == 0) {result1.innerHTML = "除数不能为0"; console.log("除数不能为0"); break; }
+						result1.innerHTML = x / y;
+						break;
+					case "trans-btn" :
+						result2.innerHTML = addPreZero(dec2bin(dec_num),lens);
+						break;
+					case "hello-btn" :
+						hello_output();
+						break;
+				}
+			}
+		}
+		
+		console.log(console_output_three());
+		multi_tab();
+		
+		
+		function dec2bin(decNumber) {
+		// 在这里实现你的转化方法，注意需要判断输入必须为一个非负整数
+			var num = decNumber;
+			if(num < 0 || !(num%1 == 0)||num =='') { return "请输入正确数值";}
+			var result=0,count=0;
+			for(let i = 0;num > 1;i++) {
+				var mod;
+				if(num%2) { 
+					mod = num%2;
+					for(let j = 0 ; j< i ;j++) {
+						mod *= 10;
+					}
+				result += mod;	
+				}
+				num = parseInt(num/2);
+				count++;
+			}
+			var e = 1;
+			for(let j = 0 ; j< count ;j++) {	
+				e *= 10;
+			}
+			result += e;
+			return result.toString();	
+			<!-- num = parseInt(num); -->
+			<!-- return num.toString(2); -->
+		}
+		function addPreZero(result,len) {
+			var num = result;
+			var num_lens= result.length;
+			var pre = "";
+			var	lens = len;
+			if((lens-num_lens)<0) {console.log("设定长度不对");return result;}
+			for(let i=0 ; i< (lens-num_lens);i++){
+				pre += "0";
+			}
+			return pre+result;
+		}
+		
+		function console_output_three() {
+			var result = "";
+			for(let i = 1 ; i<=100; i++) {
+				if(i%3 == 0) {
+					result += "PA";
+				} else {
+					result += i.toString();
+				}
+				if(i<100) {result += ",";}
+			}
+			return result;
+		}
+		// 实现党点击转化按钮时，将输入的十进制数字转化为二进制，并显示在result的p标签内
+		// Some coding 
+		function hello_output() {
+			var myDate = new Date();
+			var myHours = myDate.getHours();
+			if(myHours>4&&myHours<18) {
+				result3.innerHTML = "早上好";
+			} else {
+				result3.innerHTML = "晚上好";
+			}
+		}
+		
+		function multi_tab() {
+			var tab = document.getElementsByTagName("table");
+			for(let i = 1; i <= 9 ; i++) {
+				var tab_row = document.createElement("tr");
+				tab[0].appendChild(tab_row);
+				for(let j =1 ; j <= i ;j++) {
+					var tab_cell = document.createElement("td");
+					tab_cell.innerHTML = j.toString() + "*" + i.toString() + "=" + (i*j).toString();
+					tab[0].childNodes[i-1].appendChild(tab_cell);
+				}
+			}
+		}
+    </script>
+</body>
+</html>
