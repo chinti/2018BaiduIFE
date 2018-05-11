@@ -107,7 +107,7 @@
 		function console_output_three() {
 			var result = "";
 			for(let i = 1 ; i<=100; i++) {
-				if(i%3 == 0) {
+				if(i%3 == 0 || !(i.toString().indexOf(3) == -1)) {
 					result += "PA";
 				} else {
 					result += i.toString();
