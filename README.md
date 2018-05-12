@@ -15,6 +15,7 @@
 - [第九天到第十一天：来做一个漂亮的网站](./Basic/task9/index.html)
 - [第十二天到第十五天，复杂页面实现](./Basic/task12/dist/index.html)
 - [第十七天到第十八天，“如果”可以“重来”](./Basic/task17/index.html)
+- [第十九天：找到那个DOM](./Basic/task19/index.html)
 
 #### MVVM学院
 - [1.2 用webpack4.0快速搭建开发san helloworld](./MVVM/1.2/dist/index.html)（重新做）
