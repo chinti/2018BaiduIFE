@@ -34,13 +34,16 @@
         </div>      
     </div>
 	<div  id = "show">
-		<div id = "normal">
 			<p>不使用高级选择器:</p>
 			<p id = "result1"></p>
 			<p id = "result2"></p>
 			<p id = "result3"></p>
 			<p id = "result4"></p>
-		</div>		
+			<p>使用高级选择器:</p>
+			<p id = "result5"></p>
+			<p id = "result6"></p>
+			<p id = "result7"></p>
+			<p id = "result8"></p>		
 	</div>
     <script>
 
@@ -48,6 +51,11 @@
         // 返回页面中所有li标签
 		var wrap = document.getElementById("wrapper");
 		var lists = wrap.getElementsByTagName("li");
+		return lists;
+    }
+	function getAllListItem2() {
+        // 返回页面中所有li标签
+		var lists = document.querySelectorAll("li");
 		return lists;
     }
 
@@ -66,12 +74,48 @@
 		}
 		return results;
     }
+	
+	function findAllHtmlSpanInOneSection2(sectionId) {
+        // 返回某个section下所有span中内容为HTML的span标签
+		var id = sectionId;
+		//var section = document.getElementById(id);
+		//var spans = section.getElementsByTagName("span");
+		var spans = document.querySelectorAll("#"+id + " span")
+		var results = new Array();
+		var j = 0;
+		for(let i=0;i<spans.length;i++) {
+			if(spans[i].innerText == "HTML") {
+				results[j] = spans[i];
+				j++;
+			}
+		}
+		return results;
+    }
+	
 
     function findListItem(sectionId, spanCont) {
         // 返回某个section下，所有所包含span内容为spanCont的LI标签
 		var id = sectionId;
 		var section = document.getElementById(id);
 		var spans = section.getElementsByTagName("span");
+		var cont = spanCont;
+		var results = new Array();
+		var j = 0;
+		for(let i=0;i<spans.length;i++) {
+			if(spans[i].innerText == spanCont) {
+				results[j] = spans[i];
+				j++;
+			}
+		}
+		return results;
+    }
+	
+	function findListItem2(sectionId, spanCont) {
+        // 返回某个section下，所有所包含span内容为spanCont的LI标签
+		var id = sectionId;
+		//var section = document.getElementById(id);
+		//var spans = section.getElementsByTagName("span");
+		var spans = document.querySelectorAll("#"+id+" span")
 		var cont = spanCont;
 		var results = new Array();
 		var j = 0;
@@ -91,10 +135,18 @@
 		var links = section.getElementsByClassName("active");
 		return links[0].innerText;
     }
+	function getActiveLinkContent2(sectionId) {
+        // 返回某个section下，class为active的链接中包含的文字内容
+		var id = sectionId;
+		//var section = document.getElementById(id);
+		//var links = section.getElementsByClassName("active");
+		var links = document.querySelectorAll("#"+id+" .active");
+		return links[0].innerText;
+    }
 	
 	
 	var result1 = document.getElementById("result1");
-	result1.innerText = "全部li标签的个数为"+ getAllListItem().length.toString();
+	result1.innerText = "全部li标签的个数为"+ getAllListItem2().length.toString();
 	var result2 = document.getElementById("result2");
 	result2.innerHTML = "id为news-top的section下所有内容为HTML的span标签的个数为："
 	+findAllHtmlSpanInOneSection("news-top").length.toString()
@@ -111,6 +163,28 @@
 	+findListItem("news-normal","CSS").length.toString();
 	var result4 = document.getElementById("result4");
 	result4.innerHTML = "id为news-top的section下,class为active的链接中包含的文字内容为"
+	+ getActiveLinkContent("news-top")
+	+ "<br>id为news-normal的section下,class为active的链接中包含的文字内容为"
+	+ getActiveLinkContent("news-normal");
+	
+	var result5 = document.getElementById("result5");
+	result5.innerText = "全部li标签的个数为"+ getAllListItem2().length.toString();
+	var result6 = document.getElementById("result6");
+	result6.innerHTML = "id为news-top的section下所有内容为HTML的span标签的个数为："
+	+findAllHtmlSpanInOneSection2("news-top").length.toString()
+	+"<br>id为news-normal的section下所有内容为HTML的span标签的个数为："
+	+findAllHtmlSpanInOneSection2("news-normal").length.toString();
+	var result7 = document.getElementById("result7");
+	result7.innerHTML = "id为news-top的section下所有内容为JS的span标签的个数为："
+	+findListItem2("news-top","JS").length.toString()
+	+"<br>id为news-normal的section下所有内容为JS的span标签的个数为："
+	+findListItem2("news-normal","JS").length.toString()
+	+"<br>id为news-top的section下所有内容为CSS的span标签的个数为："
+	+findListItem2("news-top","CSS").length.toString()
+	+"<br>id为news-normal的section下所有内容为CSS的span标签的个数为："
+	+findListItem2("news-normal","CSS").length.toString();
+	var result8 = document.getElementById("result8");
+	result8.innerHTML = "id为news-top的section下,class为active的链接中包含的文字内容为"
 	+ getActiveLinkContent("news-top")
 	+ "<br>id为news-normal的section下,class为active的链接中包含的文字内容为"
 	+ getActiveLinkContent("news-normal");
