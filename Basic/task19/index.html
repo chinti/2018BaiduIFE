@@ -65,11 +65,12 @@
 		var section = document.getElementById(id);
 		var spans = section.getElementsByTagName("span");
 		var results = new Array();
-		var j = 0;
+		//var j = 0;
 		for(let i=0;i<spans.length;i++) {
 			if(spans[i].innerText == "HTML") {
-				results[j] = spans[i];
-				j++;
+				//results[j] = spans[i];
+				//j++;
+				results.push(spans[i]);
 			}
 		}
 		return results;
@@ -82,11 +83,12 @@
 		//var spans = section.getElementsByTagName("span");
 		var spans = document.querySelectorAll("#"+id + " span")
 		var results = new Array();
-		var j = 0;
+		//var j = 0;
 		for(let i=0;i<spans.length;i++) {
 			if(spans[i].innerText == "HTML") {
-				results[j] = spans[i];
-				j++;
+				//results[j] = spans[i];
+				//j++;
+				results.push(spans[i]);
 			}
 		}
 		return results;
@@ -100,11 +102,12 @@
 		var spans = section.getElementsByTagName("span");
 		var cont = spanCont;
 		var results = new Array();
-		var j = 0;
+		//var j = 0;
 		for(let i=0;i<spans.length;i++) {
 			if(spans[i].innerText == spanCont) {
-				results[j] = spans[i];
-				j++;
+				//results[j] = spans[i];
+				//j++;
+				results.push(spans[i]);
 			}
 		}
 		return results;
@@ -118,11 +121,12 @@
 		var spans = document.querySelectorAll("#"+id+" span")
 		var cont = spanCont;
 		var results = new Array();
-		var j = 0;
+		//var j = 0;
 		for(let i=0;i<spans.length;i++) {
 			if(spans[i].innerText == spanCont) {
-				results[j] = spans[i];
-				j++;
+				//results[j] = spans[i];
+				//j++;
+				results.push(spans[i]);
 			}
 		}
 		return results;
