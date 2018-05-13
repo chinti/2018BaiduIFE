@@ -1,0 +1,63 @@
+﻿<template>
+    <div id="data">
+		<input type = "text" value = "{= person.name =}" placeholder = "姓名 （string）">
+		<input type = "number" value = "{= person.age =}" placeholder = "年龄 （number）" on-input= "setAge($event)">
+		<input type = "text" value = "{= person.description =}" placeholder = "简介 （string）">
+		<br>
+		<p>信息：<button name = "clear" on-click = "clear">移除信息</button></p>
+		<p>姓名：<span>{{ person.name }} </span></p>
+		<p>年龄：<span>{{ person.ageNumber }}</span></p>
+		<p>简介：<span>{{ person.description }}</span></p>
+	</div>
+</template>
+
+<script>
+	import {DataTypes} from 'san'
+	const person = {
+		name:		'',
+		age:		'',
+		description:'',
+		ageNumber:	undefined
+	}
+	
+	export default {
+		initData() {
+			return {
+				person
+			};
+		},
+		
+		clear() {
+			this.data.set('person',person);
+			//console.log("test");
+		},
+		setAge() {
+			this.data.set("person.ageNumber",Number(this.data.get("person.age")));
+		},
+		dataTypes:{
+            person:DataTypes.shape({
+                name: DataTypes.string,
+                ageNumber: DataTypes.number,
+                des: DataTypes.string,
+            })
+        }
+	}
+	
+</script>
+
+<style>
+	* {
+	box-sizing:			border-box;
+	}
+    input {
+		padding-left:	10px;
+		height:			30px;
+		border:			1px solid black;
+	}
+	button {
+		display:		inline;
+		height:			20px;
+		width:			80px;
+		line-height:	16px;
+	}
+</style>
