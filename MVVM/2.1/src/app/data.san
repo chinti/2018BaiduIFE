@@ -5,9 +5,10 @@
 		<input type = "text" value = "{= person.description =}" placeholder = "简介 （string）">
 		<br>
 		<p>信息：<button name = "clear" on-click = "clear">移除信息</button></p>
-		<p>姓名：<span>{{ person.name }} </span></p>
-		<p>年龄：<span>{{ person.ageNumber }}</span></p>
-		<p>简介：<span>{{ person.description }}</span></p>
+		<br>
+		<p>姓名：<span>{{ person.name }} </span><div></div></p>
+		<p>年龄：<span>{{ person.ageNumber }}</span><div></div></p>
+		<p>简介：<span>{{ person.description }}</span><div></div></p>
 	</div>
 </template>
 
@@ -60,4 +61,12 @@
 		width:			80px;
 		line-height:	16px;
 	}
+	p > div {
+		width:			100px;
+		height:			1px;
+		background-color:	black;
+		position:		relative;
+		left:			50px;
+	}
+
 </style>
