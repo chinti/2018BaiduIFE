@@ -564,37 +564,29 @@
 			[8, "Area2-2-1", 6],
 		];
 		
-		<!-- transferArr(menuArr); -->
+		transferArr(menuArr);
 		
-		<!-- function transferArr(arr) { -->
-			<!-- var a = arr; -->
-			<!-- var obj = new Object(); -->
-			<!-- for ( let i = 0 ; i < a.length ; i++) { -->
-				<!-- if(a[i][2]==-1) { -->
-					<!-- obj[a[i][0].toString()] = new Object(); -->
-					<!-- obj[a[i][0].toString()]['name'] = a[i][1];  -->
-				<!-- } else { -->
-					<!-- var p = obj; -->
-					<!-- var s = new array(); -->
-					<!-- var i = 0; -->
-					<!-- while(p||s.length != 0) { -->
-						<!-- var p = p; -->
-						<!-- if (pp) { -->
-							<!-- s.push(pp); -->
-							<!-- pp = pp[i]; -->
-						<!-- } -->
-						<!-- else if( i < pp.length-1) { -->
-							<!-- i++; -->
-							<!-- p = p[i]; -->
-						<!-- } -->
-						<!-- else { -->
-							<!-- p = p[] -->
-						<!-- } -->
-					<!-- } -->
-				<!-- } -->
-			<!-- } -->
-			<!-- console.log(obj); -->
-		<!-- } -->
+		function transferArr(arr) {
+			var a = arr;
+			var obj = new Object();
+			obj[0] = new Object();
+			for ( let i = 0 ; i < a.length ; i++) {
+				obj[a[i][0]] = new Object();
+				obj[a[i][0]]['name'] = a[i][1]; 
+				if (a[i][2] == -1) {
+					obj[0][a[i][0]] = obj[a[i][0]];
+				} else {
+					if(obj[a[i][2]].subMenu) {
+						obj[a[i][2]].subMenu = obj[a[i][2]].subMenu;
+					} else {
+						obj[a[i][2]].subMenu = new Object();
+					}					
+                    obj[a[i][2]].subMenu[a[i][0]] = obj[a[i][0]];
+				}
+			}
+			console.log(obj[0]);
+		}
+
     </script>
 </body>
 </html>
