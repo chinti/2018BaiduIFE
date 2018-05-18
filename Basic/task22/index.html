@@ -1,0 +1,600 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>第二十二天到第二十四天：JavaScript里面的居民们</title>
+	<style>
+		#wrap1,#wrap2,#wrap3,#wrap4 {
+			width:			800px;
+			margin:			0 auto;
+			text-align:		center;
+		}
+	</style>
+	</head>
+<body>  
+	<div id = "wrap1">
+		<div>
+			<label for="num-a">Number A:<input class="radio-a" type="radio" name="math-obj" value="a"></label><input id="num-a" type="text">
+			<label>Number B:<input class="radio-b" type="radio" name="math-obj" value="b"></label><input id="num-b" type="text">
+		</div>
+		<div>
+			<button>判断当前选中的输入框输入内容是否为数字</button>
+			<button>把 A 四舍五入为 B 个小数位数的数字</button>
+			<button>当前选中数字的绝对值</button>
+			<button>对当前选中的数字进行上舍入</button>
+			<button>对当前选中的数字进行下舍入</button>
+			<button>把当前选中的数字四舍五入为最接近的整数</button>
+			<button>返回 A 和 B 中的最高值</button>
+			<button>返回 A 和 B 中的最低值</button>        
+		</div>
+		<p id="result1"></p>
+	</div>
+	<div id = "wrap2">
+		<div>
+			<label>String A:
+				<input id="radio-a" type="radio" checked="true" name="str-obj" value="a">
+			</label><textarea id="str-a"></textarea>
+			<label>String B:
+				<input id="radio-b" type="radio" name="str-obj" value="b">
+			</label><textarea id="str-b"></textarea>        
+			<label>Num A：<input id="num-a" type="number" value="0"></label>
+			<label>Num B：<input id="num-b" type="number" value="1"></label>
+		</div>
+		<div>
+			<button>获取当前选中输入的内容长度</button>
+			<button>当前选中输入中的第3个字符</button>
+			<button>把两个输入框的文字连接在一起输出（concat）</button>
+			<button>输入B中的内容，在输入A的内容中第一次出现的位置（indexOf）</button>
+			<button>输入A中的内容，在输入B的内容中最后一次出现的位置（lastIndexOf）</button>
+			<button>使用slice获取选中输入框内容的部分内容，参数为num-a及num-b</button>
+			<button>当前选中输入框的行数</button>
+			<button>使用substr获取选中输入框内容的子字符串，参数为num-a及num-b</button>
+			<button>把所选输入框中的内容全部转为大写</button>
+			<button>把所选输入框中的内容全部转为小写</button>
+			<button>把所选输入框中内容的半角空格全部去除</button>
+			<button>把所选输入框中内容的a全部替换成另外一个输入框中的内容</button>
+		</div>
+		<p id="result2"></p>
+	</div>
+	<div id = "wrap3">
+		<input id="queue-input" type="text">
+		<p id="queue-cont">队列内容：apple-&gt;pear</p>    
+		<button id="in-btn">入队</button>
+		<button id="out-btn">出队</button>
+		<button id="font-btn">打印队头元素内容</button>
+		<button id="empty-btn">判断队列是否为空</button>
+	</div>
+	<div id = "wrap4">
+		<input id="stack-input" type="text">
+		<p id="stack-cont">栈内容：apple-&gt;pear</p>    
+		<button id="push-btn">进栈</button>
+		<button id="pop-btn">退栈</button>
+		<button id="font-btn">打印栈顶元素内容</button>
+		<button id="empty-btn">判断栈是否为空</button>
+	</div>
+    <script>
+		var radios_wrap1 = document.querySelectorAll("#wrap1 input[type = 'radio']");
+		var inputs_wrap1 = document.querySelectorAll("#wrap1 input[type= 'text']");
+		var radios_wrap2 = document.querySelectorAll("#wrap2 input[type = 'radio']");
+		var inputs_wrap2 = document.querySelectorAll("#wrap2 textarea");
+		var radios_all = document.querySelectorAll("#wrap1 input[type = 'radio'],#wrap2 input[type = 'radio']");
+		var inputs_all = document.querySelectorAll("#wrap1 input[type= 'text'],#wrap2 textarea");
+		
+		
+		for(let i = 0 ;i< inputs_all.length; i++) {
+			inputs_all[i].onfocus = function() {
+				radios_all[i].checked = "checked";
+			}
+		}
+		for(let i = 0 ;i< radios_all.length; i++) {
+			radios_all[i].onchange = function() {
+				inputs_all[i].focus();
+			}
+		}
+		var buttons_wrap1 = document.querySelectorAll("#wrap1 button");
+		for(let i= 0 ;i< buttons_wrap1.length; i++) {
+			buttons_wrap1[i].onclick = function() {
+				var result1 = document.querySelector("#result1");
+				var radio1 = document.querySelector("#wrap1 input[type = 'radio']:checked");
+				if(radio1 == null) {result1.innerText = "没有被选中的输入框！"; return null;}
+				var input = radio1.parentNode.nextSibling;
+				var flag = false;
+				if(isNaN(input.value)||input.value == '') {flag = true;}
+				switch(buttons_wrap1[i].innerText) {
+					case "判断当前选中的输入框输入内容是否为数字":
+						if(flag) { result1.innerText = "选中的输入框不是数字！";}
+						else { result1.innerText = "选中的输入框是数字！";}
+						break;
+					case "把 A 四舍五入为 B 个小数位数的数字":
+						if(isNaN(inputs_wrap1[0].value)||isNaN(inputs_wrap1[1].value)) { console.log("AB中存在不是数字"); break;}
+						var length = Number(inputs_wrap1[1].value);
+						result1.innerText = (Math.round(Number(inputs_wrap1[0].value)*Math.pow(10,length))/Math.pow(10,length)).toFixed(length);
+						break;
+					case "当前选中数字的绝对值":
+						if(flag) { console.log("选中的输入框不是数字！");break;}
+						result1.innerText = Math.abs(Number(input.value));
+						break;
+					case "对当前选中的数字进行上舍入":
+						if(flag) { console.log("选中的输入框不是数字！");break;}
+						result1.innerText = Math.ceil(Number(input.value));
+						break;
+					case "对当前选中的数字进行下舍入":
+						if(flag) { console.log("选中的输入框不是数字！");break;}
+						result1.innerText = Math.floor(Number(input.value));
+						break;
+					case "把当前选中的数字四舍五入为最接近的整数":
+						if(flag) { console.log("选中的输入框不是数字！");break;}
+						result1.innerText = Math.round(Number(input.value));
+						break;
+					case "返回 A 和 B 中的最高值":
+						if(isNaN(inputs_wrap1[0].value)||isNaN(inputs_wrap1[1].value)) { console.log("AB中存在不是数字"); break;}
+						result1.innerText = (Number(inputs_wrap1[0].value) > Number(inputs_wrap1[1].value))? Number(inputs_wrap1[0].value) :Number(inputs_wrap1[1].value);
+						break;
+					case "返回 A 和 B 中的最低值":
+						if(isNaN(inputs_wrap1[0].value)||isNaN(inputs_wrap1[1].value)) { console.log("AB中存在不是数字"); break;}
+						result1.innerText = (Number(inputs_wrap1[0].value) < Number(inputs_wrap1[1].value))? Number(inputs_wrap1[0].value) :Number(inputs_wrap1[1].value)
+						break;
+				}
+			}
+		}
+		var buttons_wrap2 = document.querySelectorAll("#wrap2 button");
+		//console.log(buttons_wrap2.length);
+		for(let i = 0 ; i < buttons_wrap2.length ; i ++) {
+			buttons_wrap2[i].onclick = function() {
+				var num_a = document.querySelector("#wrap2 #num-a");
+				var num_b = document.querySelector("#wrap2 #num-b");
+				var result2 = document.querySelector("#result2");
+				var radio2 = document.querySelector("#wrap2 input[type = 'radio']:checked");
+				//if(radio2 == null) {result2.innerText = "没有被选中的输入框！"; return null;}
+				if(inputs_wrap2[0].value == ''&&inputs_wrap2[1].value == '') {result2.innerText = "没有输入任何值";return null;}
+				var input = radio2.parentNode.nextSibling;
+				switch(buttons_wrap2[i].innerText) {
+					case "获取当前选中输入的内容长度":
+						result2.innerText = "当前选中输入的内容长度为"+input.value.length;
+						break;
+					case "当前选中输入中的第3个字符":
+						result2.innerText = "当前选中输入的第三个字符"+input.value.substring(2,3);
+						break;
+					case "把两个输入框的文字连接在一起输出（concat）":
+						//result2.innerText = inputs_wrap2[0].value + inputs_wrap2[1].value;
+						result2.innerText = "文字连接在一起输出为"+inputs_wrap2[0].value.concat(inputs_wrap2[1].value);
+						break;
+					case "输入B中的内容，在输入A的内容中第一次出现的位置（indexOf）":
+						if(inputs_wrap2[0].value == ''||inputs_wrap2[1].value == '') {result2.innerText = "AB有一个没有输入";break;}
+						//console.log(inputs_wrap2[0].value.lastIndexOf(inputs_wrap2[1].value));
+						if(inputs_wrap2[0].value.lastIndexOf(inputs_wrap2[1].value)==-1) {result2.innerText = "B在A中没有出现";break;}
+						result2.innerText = "B在A中第一次出现的位置是"+Number(inputs_wrap2[0].value.indexOf(inputs_wrap2[1].value));
+						break;	
+					case "输入A中的内容，在输入B的内容中最后一次出现的位置（lastIndexOf）":
+						if(inputs_wrap2[0].value == ''||inputs_wrap2[1].value == '') {result2.innerText = "AB有一个没有输入";break;}
+						if(inputs_wrap2[1].value.lastIndexOf(inputs_wrap2[0].value)==-1) {result2.innerText = "A在B中没有出现";break;}
+						result2.innerText = "A在B中最后一次出现的位置是"+Number(inputs_wrap2[1].value.lastIndexOf(inputs_wrap2[0].value));
+						break;
+					case "使用slice获取选中输入框内容的部分内容，参数为num-a及num-b":
+						if(Number(num_a.value)>Number(num_b.value)) {result2.innerText = "起始位置比终止位置大!"; break;}
+						if(input.value.length < num_b.value) {result2.innerText = "字符串比设定的参数短！"; break;}
+						result2.innerText = input.value.slice(num_a.value,num_b.value);
+						break;
+					case "当前选中输入框的行数":
+						result2.innerText = "选中输入框的行数为"+Math.ceil(input.value.length/input.cols);
+						break;
+					case "使用substr获取选中输入框内容的子字符串，参数为num-a及num-b":
+						if(Number(num_a.value)>Number(input.value.length)) {result2.innerText = "起始位置比字符长度长!"; break;}
+						if(input.value.length < Number(num_b.value)+Number(num_a.value)) {result2.innerText = "字符串比设定的参数短！"; break;}
+						result2.innerText = input.value.substr(num_a.value,num_b.value);
+						break;
+					case "把所选输入框中的内容全部转为大写":
+						result2.innerText = input.value.toUpperCase();
+						break;
+					case "把所选输入框中的内容全部转为小写":
+						result2.innerText = input.value.toLowerCase();
+						break;
+					case "把所选输入框中内容的半角空格全部去除":
+						result2.innerText = input.value.split(" ").join("");
+						break;
+					case "把所选输入框中内容的a全部替换成另外一个输入框中的内容":
+						if(input == inputs_wrap2[0]) {input.value = inputs_wrap2[1].value;}
+						else if (input == inputs_wrap2[1]) {input.value = inputs_wrap2[0].value;}
+						break;
+				}
+			}
+		}
+		/*
+		实现一个字符串头尾去除空格的函数
+		注意需要去除的空格，包括全角、半角空格
+		暂时不需要学习和使用正则表达式的方式
+		*/
+		function diyTrim(str) {
+			var result = "";
+			var string = str ;
+			
+			var i = 0,j = string.length;
+			while((string.indexOf(" ",i) == i||string.indexOf("　",i) == i)) {i++;}
+			while((string.lastIndexOf(" ",j-1) == j-1)||(string.lastIndexOf("　",j-1) == j-1)) {j--;}
+			<!-- alert(string.indexOf(" ",2)); -->
+			string = string.slice(i,j);
+			// do something
+			result = string;
+			return result;
+		}
+
+		// 测试用例
+		console.log(diyTrim(' a f b    ')); // ->a f b
+		console.log(diyTrim('    ffdaf    ')); // ->ffdaf
+		console.log(diyTrim('1    ')); // ->1
+		console.log(diyTrim('　　f')); // ->f
+		console.log(diyTrim('  　  a f b 　　 ')); // ->a f b
+		console.log(diyTrim(' ')); // ->
+		console.log(diyTrim('　')); // ->
+		console.log(diyTrim('')); // ->
+
+		/*
+		去掉字符串str中，连续重复的地方
+		*/
+		function removeRepetition(str) {
+			var result = "";
+			var string = str;
+			for(let i =0 ; i < string.length ; i++) {
+					for(let j = i+1; j < string.length ; j++) {
+						if(string[j] != string[i]){
+							break;
+						} else {
+							i++;
+						}
+					}
+					result +=string[i];
+			}
+			// do something
+			return result;
+		}
+
+		// 测试用例
+		console.log(removeRepetition("aaa")); // ->a
+		console.log(removeRepetition("abbba")); // ->aba
+		console.log(removeRepetition("aabbaabb")); // ->abab
+		console.log(removeRepetition("")); // ->
+		console.log(removeRepetition("abc")); // ->abc
+		
+		
+		var tree = {
+			"id": 0,
+			"name": "root",
+			"left": {
+				"id": 1,
+				"name": "Simon",
+				"left": {
+					"id": 3,
+					"name": "Carl",
+					"left": {
+						"id": 7,
+						"name": "Lee",
+						"left": {
+							"id": 11,
+							"name": "Fate"
+						}
+					},
+					"right": {
+						"id": 8,
+						"name": "Annie",
+						"left": {
+							"id": 12,
+							"name": "Saber"
+						}
+					}
+				},
+				"right": {
+					"id": 4,
+					"name": "Tony",
+					"left": {
+						"id": 9,
+						"name": "Candy"
+					}
+				}
+			},
+			"right": {
+				"id": 2,
+				"name": "right",
+				"left": {
+					"id": 5,
+					"name": "Carl",
+				},
+				"right": {
+					"id": 6,
+					"name": "Carl",
+					"right": {
+						"id": 10,
+						"name": "Kai"
+					}        
+				}
+			}
+		}
+		console.log(findIdByName('Kai'));
+		console.log(findIdByName('Simon'));
+		
+		console.log(findNameById('1'));
+		console.log(findNameById('10'));
+		// 假设id和name均不会重复，根据输入name找到对应的id
+		//中序遍历的非递归方法
+		function findIdByName(name) {
+			var bt = tree;
+			var s = new Array();
+			<!-- console.log(bt.left.name); -->
+			var sea_name = name;
+			while(bt||s.length !=0) {
+				if(bt) {
+					s.push(bt);
+					bt = bt.left;
+				} else {
+					bt=s.pop();
+					if(bt.name == sea_name) {
+						return bt.id;
+					}
+					bt = bt.right;
+				}
+			}
+			return "未找到名字！";
+		}
+
+		// 假设id和name均不会重复，根据输入id找到对应的name
+		function findNameById(id) {
+			var bt = tree;
+			var s = new Array();
+			var sea_id = id;
+			while(bt||s.length !=0) {
+				if(bt) {
+					s.push(bt);
+					bt = bt.left;		
+				} else {
+					bt=s.pop();
+					if(bt.id == sea_id) {
+						return bt.name;
+					}
+					bt = bt.right;
+				}
+			}
+			return "未找到id！";
+		}
+
+		// 把这个对象中所有的名字以“前序遍历”的方式全部输出到console中
+		getListWithDLR();
+		
+		function getListWithDLR() {
+			var bt = tree ;
+			var s = new Array();
+			var result = "";
+			while(bt||s.length !=0) {
+				if(bt) {
+					result += (bt.name + ' ');
+					s.push(bt);
+					bt = bt.left;
+				} else {
+					bt = s.pop();
+					bt = bt.right;
+				}
+			}
+			console.log(result);
+		}
+
+		// 把这个对象中所有的名字以“中序遍历”的方式全部输出到console中
+		getListWithLDR();
+		function getListWithLDR() {
+			var bt = tree;					
+			var s = new Array();
+			var result = '';
+			while(bt||s.length !=0) {		//栈不空或bt不空时循环
+				if(bt) {
+					s.push(bt);		 		//进栈，遍历左子树
+					bt = bt.left;
+				} else {
+					bt=s.pop();
+					result += (bt.name + ' ');		//提取name 然后向右
+					bt = bt.right;
+				}
+			}
+			console.log(result);
+		}
+
+		// 把这个对象中所有的名字以“后序遍历”的方式全部输出到console中
+		getListWithLRD();
+		function getListWithLRD() {
+			var bt = tree;
+			var s = new Array();
+			var r = null;
+			var result = '';
+			while(bt||s.length !=0) {
+				if(bt) {			//走到最左边
+					s.push(bt);
+					bt = bt.left;
+				} else {			//向右
+					bt = s[s.length-1];		//取栈顶节点，也就是最近的根节点
+					if(bt.right&&bt.right!=r) {			//若右子树存在，且未被访问
+						bt = bt.right;		
+						s.push(bt);			
+						bt = bt.left;		//再走到最左
+					} else {			//否则弹出结点并访问
+						bt = s.pop();		
+						result += (bt.name + ' ');		
+						r = bt;			//记录最近访问过的节点
+						bt = null;		//重置bt
+					}
+				} 
+			}
+			console.log(result);
+		}
+		
+		var queue = ["apple", "pear"];
+		var buttons_wrap3 = document.querySelectorAll("#wrap3 button");
+		var result3 = document.querySelector('#wrap3 #queue-cont');
+		for(let i = 0;i < buttons_wrap3.length ; i++) {
+			buttons_wrap3[i].onclick = function() {
+			var input_wrap3 = document.querySelector("#wrap3 #queue-input");
+				switch(buttons_wrap3[i].id) {
+					case "in-btn":
+						queue.unshift(input_wrap3.value);
+						result3.innerText = "队列内容："+ queue.join("->");
+						break;
+					case "out-btn":
+						queue.pop();
+						result3.innerText = "队列内容："+ queue.join("->");
+						break;
+					case "font-btn":
+						result3.innerText = "队头元素："+ queue[queue.length-1];
+						break;
+					case "empty-btn":
+						result3.innerText = (queue.length == 0) ? "队列为空":"队列不空";
+						break;
+				}
+			}
+		}
+		
+		var stack = ["apple","pear"];
+		var buttons_wrap4 = document.querySelectorAll("#wrap4 button");
+		var result4= document.querySelector('#wrap4 #stack-cont');
+		for(let i = 0;i < buttons_wrap4.length ; i++) {
+			buttons_wrap4[i].onclick = function() {
+			var input_wrap4 = document.querySelector("#wrap4 #stack-input");
+				switch(buttons_wrap4[i].id) {
+					case "push-btn":
+						stack.push(input_wrap4.value);
+						result4.innerText = "栈内容："+ stack.join("->");
+						break;
+					case "pop-btn":
+						stack.pop();
+						result4.innerText = "栈内容："+ stack.join("->");
+						break;
+					case "font-btn":
+						result4.innerText = "栈头元素："+ stack[stack.length-1];
+						break;
+					case "empty-btn":
+						result4.innerText = (stack.length == 0) ? "栈为空":"栈不空";
+						break;
+				}
+			}
+		}
+		
+		var arr = [43, 54, 4, -4, 84, 100, 58, 27, 140];
+		arr.sort(function(a,b) {
+			return a < b;
+		});
+		console.log(arr);
+		arr.sort(function(a,b) {
+			return a > b;
+		});
+		console.log(arr);
+		
+		var arr = ['apple', 'dog', 'cat', 'car', 'zoo', 'orange', 'airplane'];
+		arr.sort(function(a,b) {
+			return a > b;
+		});
+		console.log(arr);
+		arr.sort(function(a,b) {
+			return a < b;
+		});
+		console.log(arr);
+		
+		var arr = [[10, 14], [16, 60], [7, 44], [26, 35], [22, 63]];
+		arr.sort(function(a,b) {
+			return a[1] < b[1];
+		});
+		console.log(arr);
+		
+		var arr = [
+			{
+				id: 1,
+				name: 'candy',
+				value: 40
+			}, {
+				id: 2,
+				name: 'Simon',
+				value: 50
+			}, {
+				id: 3,
+				name: 'Tony',
+				value: 45
+			}, {
+				id: 4,
+				name: 'Annie',
+				value: 60
+			}
+		];
+		arr.sort(function(a,b) {
+			return a.value > b.value;
+		});
+		console.log(arr);
+		
+		var scoreObject = {
+			"Tony": {
+				"Math": 95,
+				"English": 79,
+				"Music": 68
+			}, 
+			"Simon": {
+				"Math": 100,
+				"English": 95,
+				"Music": 98
+			}, 
+			"Annie": {
+				"Math": 54,
+				"English": 65,
+				"Music": 88
+			}
+		}
+		transferObj(scoreObject);
+		function transferObj(object) {
+			var obj = object;
+			var arr = new Array();
+			for(let i in obj ) {
+				var arr_row = new Array();
+				arr_row.push(i);
+				for (let j in obj[i]) {
+					arr_row.push(obj[i][j]);
+				}
+				arr.push(arr_row);
+			}
+			console.log(arr);
+		}
+		var menuArr = [
+			[1, "Area1", -1],
+			[2, "Area2", -1],
+			[3, "Area1-1", 1],
+			[4, "Area1-2", 1],
+			[5, "Area2-1", 2],
+			[6, "Area2-2", 2],
+			[7, "Area1-2-3", 4],
+			[8, "Area2-2-1", 6],
+		];
+		
+		<!-- transferArr(menuArr); -->
+		
+		<!-- function transferArr(arr) { -->
+			<!-- var a = arr; -->
+			<!-- var obj = new Object(); -->
+			<!-- for ( let i = 0 ; i < a.length ; i++) { -->
+				<!-- if(a[i][2]==-1) { -->
+					<!-- obj[a[i][0].toString()] = new Object(); -->
+					<!-- obj[a[i][0].toString()]['name'] = a[i][1];  -->
+				<!-- } else { -->
+					<!-- var p = obj; -->
+					<!-- var s = new array(); -->
+					<!-- var i = 0; -->
+					<!-- while(p||s.length != 0) { -->
+						<!-- var p = p; -->
+						<!-- if (pp) { -->
+							<!-- s.push(pp); -->
+							<!-- pp = pp[i]; -->
+						<!-- } -->
+						<!-- else if( i < pp.length-1) { -->
+							<!-- i++; -->
+							<!-- p = p[i]; -->
+						<!-- } -->
+						<!-- else { -->
+							<!-- p = p[] -->
+						<!-- } -->
+					<!-- } -->
+				<!-- } -->
+			<!-- } -->
+			<!-- console.log(obj); -->
+		<!-- } -->
+    </script>
+</body>
+</html>
