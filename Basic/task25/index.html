@@ -1,0 +1,287 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>第二十五天到第二十七天 倒数开始 滴答滴 滴答滴</title>
+	<style>
+		* {
+			box-sizing :border-box;
+		}
+		#wrap1,#wrap2{
+			width:	600px;
+			margin:		0 auto;
+			border:		1px solid grey;
+			border-radius:	5px;
+			box-shadow:		1px 1px 1px #888,
+							-1px 1px 1px #888;
+			margin-bottom:	20px;
+			text-align:	center;
+		}
+	</style>
+	</head>
+<body> 
+	<div id = "wrap1">
+		<p id = "showDate1">这里用来显示时间</p>
+		<p id = "showDate2">这里用来显示时间</p>
+	</div>
+	<div id = "wrap2">
+		<select id="year-select">
+		</select>
+		<select id="month-select">
+		</select>
+		<select id="day-select">
+		</select>
+		<select id="hour-select">
+		</select>
+		<select id="minite-select">
+		</select>
+		<select id="second-select">
+		</select>
+		<p id="result-wrapper">现在距离 2001年1月1日星期X HH:MM:SS 还有 X 天 X 小时 X 分 X 秒</p>
+	</div>
+    <script>
+	function Go() {
+    console.log("Go");
+	}
+
+	function GoSteps(n) {
+		var m = Math.floor(n);
+		if(n === undefined) {m = 1;}
+		if(n === null) {m = 0;}
+		
+		for (let i = 0 ; i < m ; i++) {
+			Go();
+		}		
+	}
+
+	GoSteps(10); // Go 10次
+	GoSteps(1); // Go 1次
+	GoSteps(); // Go 1次，认为缺少参数时，默认参数为1
+	GoSteps(0);  // 0次
+	GoSteps(-1);  // 0次
+	GoSteps(1.4);  // Go 1次
+	GoSteps(1.6);  // Go 1次
+	GoSteps(-1);  // 0次
+	GoSteps(true);  // Go 1次
+	GoSteps(false);  // 0次
+	GoSteps("Test");  // 0次
+	GoSteps(NaN);  // 0次
+	GoSteps(null);  // 0次
+	
+	
+	function getDayinZh(d) {	
+		var days = d.getDay();
+		switch(days) {
+			case 1 :
+				days = "星期一";
+				break;
+			case 2 :
+				days = "星期二";
+				break;
+			case 3 :
+				days = "星期三";
+				break;
+			case 4 :
+				days = "星期四";
+				break;
+			case 5 :
+				days = "星期五";
+				break;
+			case 6 :
+				days = "星期六";
+				break;
+			case 0 :
+				days = "星期日";
+				break;
+		}
+		return days;
+	}
+	function getDayinEn(d) {	
+		var days = d.getDay();
+		switch(days) {
+			case 1 :
+				days = "Monday";
+				break;
+			case 2 :
+				days = "Tuesday";
+				break;
+			case 3 :
+				days = "Wednesday";
+				break;
+			case 4 :
+				days = "Thursday";
+				break;
+			case 5 :
+				days = "Friday";
+				break;
+			case 6 :
+				days = "Saturday";
+				break;
+			case 0 :
+				days = "Sunday";
+				break;
+		}
+		return days;
+	}
+	function getTimes(d) {
+		var t = new Array();
+		t[0] = d.getFullYear();
+		t[1] = d.getMonth()+1;
+		t[2] = d.getDate();
+		t[3] = d.getHours();
+		t[4] = d.getMinutes();
+		t[5] = d.getSeconds();
+		t[6] = t[3];
+		t[7] = "AM"
+		if(t[3] > 11) {t[6] = t[3] - 12; t[7] = "PM"}
+		for(let i = 0 ; i < t.length-1 ; i++) {
+			t[i] = checkTime(t[i]);
+		}
+ 		
+		return t;
+	} 
+	function checkTime(i) {
+		if(i < 10) {
+			i = "0"+i;
+		}
+		return i ;
+	}
+	function showTimes1() {
+		var d = new Date();
+		var t = getTimes(d);
+		var day = getDayinZh(d);
+		var result1 = document.querySelector("#showDate1");
+		result1.innerText = t[0]+"年"+t[1]+"月"+t[2]+"日 "+day+" "+t[3]+":"+t[4]+":"+t[5];
+		setTimeout('showTimes1()',100);
+	}
+	function showTimes2() {
+		var d = new Date();;
+		var t = getTimes(d);
+		var day = getDayinEn(d);
+		var result2 = document.querySelector("#showDate2");
+		result2.innerText = t[0]+"-"+t[1]+"-"+t[2]+" "+day+" "+t[6]+":"+t[4]+":"+t[5]+" "+t[7];
+		setTimeout('showTimes2()',50);
+	}
+	showTimes1();
+	showTimes2();
+	
+	function prepareSelect(sel) {
+		var id = "#"+sel;
+		var select = document.querySelector("#wrap2 "+id);
+		var select_index = select.selectedIndex;
+		select.innerHTML = "";
+		var start,end;
+		switch(sel) {
+			case "year-select":
+				start = 2000; end = 2032;
+				break;
+			case "month-select":
+				start = 1; end = 12;
+				break;
+			case "day-select": //需要判断28-31天
+				t = checkDay();
+				start = 1; end = t;
+				break;
+			case "hour-select":
+				start = 0; end = 23;
+				break;
+			case "minite-select":
+				start = 0; end = 59;
+				break;
+			case "second-select":
+				start = 0; end = 59;
+				break;
+		}
+		for(let i = start;i <= end;i++) {
+			var option = document.createElement("option");
+			option.innerText = i;
+			select.appendChild(option);
+		}
+	}
+	function checkDay() {
+		var t ;
+		var year_selected = document.querySelector("#wrap2 #year-select").selectedIndex;
+		var year = Number(document.querySelectorAll("#wrap2 #year-select > option")[year_selected].innerText);
+		var month_selected = document.querySelector("#wrap2 #month-select").selectedIndex;
+		var month = Number(document.querySelectorAll("#wrap2 #month-select > option")[month_selected].innerText);
+		switch(month) {
+			case 1 :
+			case 3 :
+			case 5 :
+			case 7 :
+			case 8 :
+			case 10 :
+			case 12 :
+				t = 31;
+				break;
+			case 4 :
+			case 6 :
+			case 9 :
+			case 11 :
+				t = 30;
+				break;
+			case 2 :
+				t = 28 ;
+				if ((year% 4 == 0 && year% 100 !=0 )||year % 400 == 0 ) {
+					t = 29;
+				}
+				break;
+		}
+		return t;
+	}
+	function prepareAll() {
+		prepareSelect("year-select");
+		prepareSelect("month-select");
+		prepareSelect("day-select");
+		prepareSelect("hour-select");
+		prepareSelect("minite-select");
+		prepareSelect("second-select");
+	}
+	prepareAll();
+	var selects = document.querySelectorAll("#wrap2 select");
+	for (let i = 0 ; i < selects.length ; i++) {
+		var result = document.querySelector("#wrap2 #result-wrapper");
+		selects[i].onchange = function() {
+			switch(selects[i].id) {
+				case "year-select" :
+				case "month-select" :
+					prepareSelect("day-select");
+					break;
+			}
+		}
+	}
+	function showResultWrap() {
+			var d = new Date();
+			d.setFullYear(selects[0].value);
+			d.setMonth(selects[1].value-1);
+			d.setDate(selects[2].value);
+			d.setHours(selects[3].value);
+			d.setMinutes(selects[4].value);
+			d.setSeconds(selects[5].value);
+			var date = getDayinZh(d);
+			var now = new Date();
+			var d_value = (now >= d) ?( now-d ): (d - now);
+			<!-- var day = Math.floor((d_value)/1000/60/60/24); -->
+			<!-- var hour = Math.floor(((d_value)-day*24*60*60*1000)/1000/60/60) -->
+			<!-- var minute = Math.floor(((d_value)-day*24*60*60*1000-hour*60*60*1000)/1000/60); -->
+			<!-- var second = Math.floor(((d_value)-day*24*60*60*1000-hour*60*60*1000-minute*60*1000)/1000); -->
+			var day = Math.floor(d_value/1000/60/60/24);
+			var hour = Math.floor(d_value/1000/60/60%24);
+			var minute = Math.floor(d_value/1000/60%60);
+			var second = Math.floor(d_value/1000%60);
+			if(now < d) {
+				result.innerText="现在距离 "+selects[0].value+"年"+selects[1].value+"月"
+					+selects[2].value+"日"+date+" "+selects[3].value+":"+selects[4].value+":"+selects[5].value 
+					+"还有"+day+"天"+hour+"小时"+minute+"分"+second+"秒";
+					setTimeout('showResultWrap()',100);
+			} else {
+				result.innerText="现在距离 "+selects[0].value+"年"+selects[1].value+"月"
+					+selects[2].value+"日"+date+" "+selects[3].value+":"+selects[4].value+":"+selects[5].value 
+					+"已经过去"+day+"天"+hour+"小时"+minute+"分"+second+"秒";
+					setTimeout('showResultWrap()',100);
+			}
+	}
+	showResultWrap();
+    </script>
+</body>
+</html>
