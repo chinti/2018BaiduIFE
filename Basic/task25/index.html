@@ -152,7 +152,7 @@
 		var day = getDayinZh(d);
 		var result1 = document.querySelector("#showDate1");
 		result1.innerText = t[0]+"年"+t[1]+"月"+t[2]+"日 "+day+" "+t[3]+":"+t[4]+":"+t[5];
-		setTimeout('showTimes1()',100);
+		setTimeout('showTimes1()',1000);
 	}
 	function showTimes2() {
 		var d = new Date();;
@@ -160,7 +160,7 @@
 		var day = getDayinEn(d);
 		var result2 = document.querySelector("#showDate2");
 		result2.innerText = t[0]+"-"+t[1]+"-"+t[2]+" "+day+" "+t[6]+":"+t[4]+":"+t[5]+" "+t[7];
-		setTimeout('showTimes2()',50);
+		setTimeout('showTimes2()',1000);
 	}
 	showTimes1();
 	showTimes2();
@@ -273,12 +273,12 @@
 				result.innerText="现在距离 "+selects[0].value+"年"+selects[1].value+"月"
 					+selects[2].value+"日"+date+" "+selects[3].value+":"+selects[4].value+":"+selects[5].value 
 					+"还有"+day+"天"+hour+"小时"+minute+"分"+second+"秒";
-					setTimeout('showResultWrap()',100);
+					setTimeout('showResultWrap()',1000);
 			} else {
 				result.innerText="现在距离 "+selects[0].value+"年"+selects[1].value+"月"
 					+selects[2].value+"日"+date+" "+selects[3].value+":"+selects[4].value+":"+selects[5].value 
 					+"已经过去"+day+"天"+hour+"小时"+minute+"分"+second+"秒";
-					setTimeout('showResultWrap()',100);
+					setTimeout('showResultWrap()',1000);
 			}
 	}
 	showResultWrap();
