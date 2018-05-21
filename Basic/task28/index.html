@@ -15,6 +15,7 @@
 			display:	none;
 			margin:		0;
 			overflow:	auto;
+			text-align:		center;
 		}
 		.wrapper input {
 			width:		300px;
@@ -24,6 +25,12 @@
 		}
 		.active {
 			background-color:	#FFE1FF;
+		}
+		.wrapper {
+			width:			300px;
+			margin:			0 auto;
+			margin-top:		50px;
+			text-align:		center;
 		}
 	</style>
 	</head>
@@ -96,6 +103,7 @@
 		//console.log("event handle");
 		
 		addTips(showFriendlyTips());
+		//console.log(ulist.innerHTML);
 		isShowTips(ulist.innerHTML);
 	}
 	
