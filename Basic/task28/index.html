@@ -112,7 +112,8 @@
 		if(e.target&&e.target.nodeName.toLowerCase()=='li'){
 			var text = e.target.innerText;
 			input.value = HtmlUtil.htmlDecodeByRegExp(text);
-			isShowTips('');
+			ulist.innerHTML = '';
+			isShowTips(ulist.innerHTML);
 		}
 		input.focus();
 	}
@@ -212,7 +213,8 @@
 			if(li) {
 				var text = li.innerText;
 				input.value = HtmlUtil.htmlDecodeByRegExp(text);
-				isShowTips('');
+				ulist.innerHTML = '';
+				isShowTips(ulist.innerHTML);
 			}
 		}
 		if(e.keyCode == 27) {
