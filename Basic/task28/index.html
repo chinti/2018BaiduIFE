@@ -149,11 +149,16 @@
 	}
 	
 	function checkOver(arr,str) {
+		var flag = 0;
 		for(let i = 0 ; i < arr.length ; i++) {
-			if(str.indexOf('@'+arr[i])==0&&(str.length-1) > arr[i].length){
-				return true;
+			<!-- if(str.indexOf('@'+arr[i])==0&&(str.length-1) > arr[i].length){ -->
+				<!-- return true; -->
+			<!-- } -->
+			if(('@'+arr[i]).indexOf(str) < 0) {
+				flag ++ ;
 			}
 		}
+		if(flag == arr.length) {return true;}
 		return false;
 	}
 	
