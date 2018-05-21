@@ -36,7 +36,7 @@
 	</head>
 <body> 
 	<div class = "wrapper">
-		<input id="email-input" type="text" placeholder = "input your e-mail">
+		<input id="email-input" type="text" placeholder = "input your email">
 		<ul id="email-sug-wrapper" class="email-sug"></ul>
 	</div>
     <script>
@@ -134,12 +134,13 @@
 			next = str.substring(str.indexOf('@'),str.length);	
 		}
 		var arr = postfixList;
-		var list = '';
 		var flag = checkOver(arr,next);
+		var list = '';
 		for(let i = 0 ; i < arr.length ; i++) {
 			if(('@'+arr[i]).indexOf(next) == 0||next == ''||flag) {
 				pre = HtmlUtil.htmlDecodeByRegExp(pre);
 				list += '<li>'+pre+'@'+arr[i]+'</li>';	
+				//console.log(list);
 			} 
 		}
 		return list;
