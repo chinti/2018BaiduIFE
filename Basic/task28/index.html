@@ -126,6 +126,7 @@
 	
 	function showFriendlyTips() {			//生成提示内容
 		var str = getUserInput();
+		if(str == "") {return '';}
 		str = HtmlUtil.htmlEncode(str);
 		var pre = str;
 		var next = ''
@@ -134,8 +135,9 @@
 			next = str.substring(str.indexOf('@'),str.length);	
 		}
 		var arr = postfixList;
-		var flag = checkOver(arr,next);
 		var list = '';
+		var flag = checkOver(arr,next);
+		
 		for(let i = 0 ; i < arr.length ; i++) {
 			if(('@'+arr[i]).indexOf(next) == 0||next == ''||flag) {
 				pre = HtmlUtil.htmlDecodeByRegExp(pre);
@@ -148,7 +150,10 @@
 	
 	function checkOver(arr,str) {
 		for(let i = 0 ; i < arr.length ; i++) {
-			if(str.indexOf('@'+arr[i])==0&&(str.length-1) > arr[i].length){
+			<!-- if(str.indexOf('@'+arr[i])==0&&(str.length-1) > arr[i].length){ -->
+				<!-- return true; -->
+			<!-- } -->
+			if((('@'+arr[i]).indexOf(str) < 0&&(str.length-1) <= arr[i].length)||(str.indexOf('@'+arr[i])==0&&(str.length-1) > arr[i].length)) {
 				return true;
 			}
 		}
