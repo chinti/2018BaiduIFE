@@ -1,0 +1,97 @@
+﻿<template>
+    <div id="loop">
+		<input type = "button" value = "添加" on-click = "addPerson()">
+		<table>
+			<thead>
+				<th>姓名</th>
+				<th>审核状态</th>
+				<th>操作</th>
+			</thead>
+			<tbody>
+				<tr s-for = "p,index in persons">
+					<td>{{p.name}}</td>
+					<td>{{p.status}}</td>
+					<td><input type = 'button' on-click = "controlStatus(p,index)" value = "{{p.control}}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</template>
+
+<script>
+	export default {
+		initData() {
+			return {
+				persons: [
+					{
+						name:  '张三',
+						status:	'合格',
+						control: '删除',
+					},
+					{
+						name:  '李四',
+						status:	'不合格',
+						control: '删除',
+					},
+					{
+						name:  '王五',
+						status:	'待审核',
+						control: '审核',
+					},
+					{
+						name:  '赵六',
+						status:	'待审核',
+						control: '审核',
+					},
+					{
+						name:  '孙七',
+						status:	'待审核',
+						control: '审核',
+					}
+				]
+			}
+		},
+		addPerson() {
+			var name = prompt("输入姓名");
+			this.data.push('persons',{name: name,status: '待审核',control : '审核'});
+		},
+		controlStatus(data,index) {
+			switch(data.status) {
+				case "合格":case "不合格":
+					this.data.remove('persons',data);
+					console.log('rest');
+					break;
+				case "待审核":
+					this.data.set('persons[index].status','合格');
+					this.data.splice('persons',[ index ,1,{name: data.name , status : "合格",control:"删除"}]);
+					
+					break;
+			}
+		}
+	}
+</script>
+
+<style>
+	* {
+	box-sizing:			border-box;
+	}
+	#loop {
+		margin:			0 auto;
+		width:			250px;
+		margin-top:		50px;
+		
+	}
+	table {
+		border-spacing:	0px;
+		border:      solid #DDD;
+		border-width:	0px 1px 1px 0px;
+		margin-top:		20px;
+		text-align:		center;
+	}
+	th,td {
+		border:			1px solid #DDD;
+		border-right:	0px;
+		border-bottom:	0px;
+		padding:		5px 10px 5px 10px;
+	}
+</style>
