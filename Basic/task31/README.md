@@ -1,8 +1,8 @@
 使用方式：
 
-`npm run install`<br>
-`npm run dev`<br>
-`npm run build`
+- `npm run install`
+- `npm run dev`
+- `npm run build`
 
 预览地址：
 
