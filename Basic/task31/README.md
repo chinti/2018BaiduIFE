@@ -1,5 +1,5 @@
 使用方式：
 
-`npm run install`
-`npm run dev`
+`npm run install`<br>
+`npm run dev`<br>
 `npm run build`
