@@ -20,6 +20,7 @@
 - [第二十二天到第二十四天：JavaScript里面的居民们](./Basic/task22/index.html)
 - [第二十五天到第二十七天 倒数开始 滴答滴 滴答滴](./Basic/task25/index.html)
 - [第二十八天到第三十天 给爱的人发个邮件吧](./Basic/task28/index.html)
+- [第三十一到第三十三天：我是精明的小卖家（一）](./Basic/task31/dist/index.html)
 
 #### MVVM学院
 - [1.2 用webpack4.0快速搭建开发san helloworld](./MVVM/1.2/dist/index.html)（重新做）
