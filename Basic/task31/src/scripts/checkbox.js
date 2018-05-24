@@ -16,9 +16,9 @@ let checkboxlist = {
 function prepareCheckBox(list,index) {
 	var arr = list[index];
 	var id = index + '-radio-wrapper';
-	var result = '<input type = "checkbox" name = "'+index+'" value = "全选"  checkbox-type = "all"><label>全选</label>';
+	var result = '<label><input type = "checkbox" name = "'+index+'" value = "全选"  checkbox-type = "all">全选</label>';
 	for (let i in arr) {
-		result += '<input type = "checkbox" name = "'+index+'" value = "'+arr[i]+'"><label>'+arr[i]+'</label>';
+		result += '<label><input type = "checkbox" name = "'+index+'" value = "'+arr[i]+'">'+arr[i]+'</label>';
 	}
 	var wrapper = document.querySelector('#app2 #'+id);
 	wrapper.innerHTML = result;
