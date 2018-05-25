@@ -26,7 +26,7 @@
 - [1.2 用webpack4.0快速搭建开发san helloworld](./MVVM/1.2/dist/index.html)（重新做）
 - [2.1 数据操作](./MVVM/2.1/dist/index.html)
 - [2.2 条件和循环](./MVVM/2.2/dist/index.html)
-
+- [2.4 事件处理](./MVVM/2.4/dist/index.html)
 
 #### 设计师学院
 - [No.1- 制作一个简单的菜单动画效果](./Design/No.1/index.html)
