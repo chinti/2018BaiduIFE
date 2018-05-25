@@ -1,0 +1,98 @@
+﻿<template>
+    <div id="event">
+			<pr-input></pr-input>
+			<label id = "wrapper">我是更高层的父组件: <span>{{message}}</span></label>
+	</div>
+</template>
+	
+<script>
+	import san from 'san'
+	//子组件
+	let child_component = san.defineComponent({  
+		template: `<div>
+						<label>子组件: <input type = "text" value = "{=input =}"></label>
+						<input type = 'button' value = "通知父组件" on-click = "show">
+					</div>`,
+					
+		inited:	function(){						//生命周期钩子，初始化完成后，该方法被调用
+			this.data.set('input','');
+		},
+		show:	function() {
+			var value = this.data.get('input');
+			this.fire('myclick',value);
+			//this.fire('prclick',value);
+			this.dispatch('prclick',value);				//对非owner的上层组件要通过messages,传递的还是一个object
+			//console.log(value);
+		},
+	});
+	//父组件
+	let parent_component = san.defineComponent({
+		template:	`
+						<div>
+							<ch-input on-myclick= "myclick" input = "{{ message }}"></ch-input>
+							<label for = 'pi'>我是父组件: <input type = "text" value = "{= message =}" id = "pi"></label>
+						</div>
+					`,
+		components:	{
+			'ch-input':		child_component
+		},
+		initData() {
+			return {
+				message:	"静静等待用户输入"
+			}
+		},
+		myclick:	function(data) {
+			this.data.set('message',data);
+		}
+	});
+
+	export default {
+		initData() {
+			return {
+				message:	"我也静静等待用户输入"
+			}
+		},
+		components: {
+			'pr-input':			parent_component
+		},
+		messages: {
+			prclick:	function(data){
+				//console.log('1');
+				this.data.set('message',data.value)
+			},
+		}
+	}
+</script>
+
+<style>
+	* {
+		box-sizing:			border-box;
+	}
+	#event {
+		width:				600px;
+		margin:				0 auto;
+		margin-top:			20px;
+		padding:			10px;
+		border:				1px solid #AAA;
+		border-radius:		5px;
+		box-shadow:			1px 1px 1px 1px #DDD,
+							-1px 1px 1px 1px #DDD;
+		
+	}
+	input {
+		font-size:			1.1em;
+	}
+	label {
+		font-size:			1.2em;
+	}
+	#pi {
+		border:				none;
+		color:				#7FFF00;
+	}
+	label[for = 'pi'] {
+		color:				#7FFF00;
+	}
+	#wrapper {
+		color:				#FF83FA;
+	}
+</style>
