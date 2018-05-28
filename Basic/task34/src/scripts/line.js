@@ -24,6 +24,7 @@ function drawALine(data) {
 		var ctx = canvas.getContext('2d');
 		ctx.clearRect(0,0,558,300);
 		ctx.beginPath();
+		ctx.strokeStyle = "black";
 		ctx.moveTo(50,50);
 		ctx.lineTo(50,250);
 		ctx.moveTo(45,250);
@@ -33,6 +34,13 @@ function drawALine(data) {
 				ctx.moveTo(51,(250-data[0]['sale'][i]*t));
 			}else {
 				ctx.lineTo(51+40*i,(250-data[0]['sale'][i]*t));
+				ctx.stroke();
+				ctx.beginPath();
+				ctx.arc(51+40*i,(250-data[0]['sale'][i]*t),2,0,2*Math.PI,true);
+				ctx.fillStyle = 'black';
+				ctx.fill();
+				ctx.beginPath();
+				ctx.moveTo(51+40*i,(250-data[0]['sale'][i]*t));
 			}
 		}
 		ctx.strokeStyle = "black";
@@ -70,10 +78,18 @@ function drawManyLine(data) {
 					ctx.moveTo(51,(250-data[j]['sale'][i]*t));
 				}else {
 					ctx.lineTo(51+40*i,(250-data[j]['sale'][i]*t));
+					ctx.stroke();
+					ctx.beginPath();
+					ctx.arc(51+40*i,(250-data[j]['sale'][i]*t),2,0,2*Math.PI,true);
+					ctx.fillStyle = color[j];
+					ctx.fill();
+					ctx.beginPath();
+					ctx.moveTo(51+40*i,(250-data[j]['sale'][i]*t));
 				}
 			}	
 		}
-		ctx.stroke();		
+		ctx.stroke();	
+		ctx.closeP
 	}
 }
 
