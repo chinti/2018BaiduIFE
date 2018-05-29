@@ -1,7 +1,7 @@
 ﻿import {sourceData} from "./ife31data.js";
 import {drawALine,prepareCanvas,drawManyLine} from './line.js'
 import {addLoadEvent} from "./global.js";
-import {drawBar} from './bar.js'
+import {drawBar,drawManyBar} from './bar.js'
 import {getDataList} from "./checkbox.js";
 
 function showCheckboxTable(arr){
@@ -81,6 +81,7 @@ function showCheckboxTable(arr){
 	table.innerHTML = "<table>"+thead+tbody+"</table>";
 	prepareTableOver();
 	drawManyLine(getDataList());
+	drawManyBar(getDataList());
 }
 function prepareTableOver() {
 	var table = document.querySelector('#app #table-wrapper2 table tbody');
@@ -94,6 +95,7 @@ function prepareTableOver() {
 	}
 	table.onmouseout = function(e) {
 		drawManyLine(getDataList());
+		drawManyBar(getDataList());
 	}
 }
 
