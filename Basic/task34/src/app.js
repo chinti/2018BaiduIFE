@@ -12,5 +12,4 @@ import {prepareTableOver} from './scripts/table.js'
 
 addLoadEvent(prepareCheckBox(checkboxlist,'region'));
 addLoadEvent(prepareCheckBox(checkboxlist,'product'));
-addLoadEvent(drawBar(getHDSJData()));
 addLoadEvent(prepareTableOver());

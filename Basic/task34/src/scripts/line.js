@@ -31,6 +31,8 @@ function drawALine(data) {
 		ctx.lineTo(500,250);
 		ctx.strokeStyle = "black";
 		ctx.stroke();
+		ctx.beginPath();
+		ctx.strokeStyle = color[0];
 		for (let i in data[0]['sale']) {
 			if(i == 0 ) {
 				ctx.moveTo(51,(250-data[0]['sale'][i]*t));
@@ -39,7 +41,7 @@ function drawALine(data) {
 				ctx.stroke();
 				ctx.beginPath();
 				ctx.arc(51+40*i,(250-data[0]['sale'][i]*t),2,0,2*Math.PI,true);
-				ctx.fillStyle = 'black';
+				ctx.fillStyle = color[0];
 				ctx.fill();
 				ctx.beginPath();
 				ctx.moveTo(51+40*i,(250-data[0]['sale'][i]*t));
@@ -71,6 +73,7 @@ function drawManyLine(data) {
 		ctx.lineTo(500,250);
 		ctx.strokeStyle = 'black';
 		ctx.stroke();
+		ctx.beginPath();
 		for(let j = 0 ; j < data.length ; j ++) {
 			for (let i in data[j]['sale']) {
 				if(i == 0 ) {
