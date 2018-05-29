@@ -26,8 +26,8 @@ function drawBar(data) {
 	t = 200/max;
 	var d = data[0]['sale'];
 	var svg_in = '<svg width="100%" height="100%" version="1.1" xmlns="http://www.w3.org/2000/svg">';
-	svg_in += "<line x1 = '50' y1 = '50' x2 = '50' y2 = '250' style = 'stroke:black ; stroke-width:1'/>";
-	svg_in += "<line x1 = '45' y1 = '250' x2 = '100%' y2 = '250' style = 'stroke:black ; stroke-width:1'/>";
+	svg_in += "<line x1 = '50' y1 = '50' x2 = '50' y2 = '250' style = 'stroke: black; stroke-width:1'/>";
+	svg_in += "<line x1 = '45' y1 = '250' x2 = '100%' y2 = '250' style = 'stroke: black ; stroke-width:1'/>";
 	for(let i in d) {
 		svg_in += "<rect width = '25' height = "+ (d[i]*t)+" fill = "+bar_color+" x ="+((bar_width+space_width)*i+space_width+50)
 		+" y="+(249-d[i]*t) +"></rect>";

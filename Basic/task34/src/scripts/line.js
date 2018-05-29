@@ -9,7 +9,7 @@ function prepareCanvas(){
 	var can = line_wrapper.querySelector('canvas');
 }
 
-let color = ['Aqua','Black','Blue','Brown','Chartreusus','Red','Coral','Crimson','DarkCyan'];
+let color = ['#60ACFC','#32D3EB','#5BC49F','#FEB64D','#ff7c7c','#9287e7','#68b6FF','#22C3DB','#4bb48f'];
 
 function drawALine(data) {
 	var canvas = document.querySelector('#app #line-wrapper canvas');
@@ -24,11 +24,13 @@ function drawALine(data) {
 		var ctx = canvas.getContext('2d');
 		ctx.clearRect(0,0,558,300);
 		ctx.beginPath();
-		ctx.strokeStyle = "black";
+		
 		ctx.moveTo(50,50);
 		ctx.lineTo(50,250);
 		ctx.moveTo(45,250);
 		ctx.lineTo(500,250);
+		ctx.strokeStyle = "black";
+		ctx.stroke();
 		for (let i in data[0]['sale']) {
 			if(i == 0 ) {
 				ctx.moveTo(51,(250-data[0]['sale'][i]*t));
@@ -89,7 +91,7 @@ function drawManyLine(data) {
 			}	
 		}
 		ctx.stroke();	
-		ctx.closeP
+		ctx.closePath();
 	}
 }
 
