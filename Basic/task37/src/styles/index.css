@@ -1,0 +1,55 @@
+* {
+	box-sizing:		border-box;
+}
+
+#app{
+	max-width:		1200px;
+	min-width:		800px;
+	margin:			0 auto;
+	border:			1px solid #AAA;
+	padding:		20px;
+	border-radius:	5px;
+	box-shadow:		1px 1px 1px 1px #DDD,
+					-1px 1px 1px 1px #DDD;
+	text-align:		center;				
+}
+table {
+	border:		0px solid #DDD;
+	border-width:	0 1px 1px 0 ;
+	border-spacing:	0px;
+	width:			100%;
+	margin-top:		5px;
+}
+th,td {
+	border:		0px solid #DDD;
+	border-width:	1px 0 0 1px;
+	padding:	3px;
+	text-align:	center;
+
+}
+tbody td:hover {
+	background:	url('../asserts/pencil.svg') no-repeat;
+	background-position:		0% 0%;
+	background-size:			20px;
+}
+tbody td[rowspan]:hover,tbody td[rowspan]+td:hover,tbody td:nth-child(1):hover {
+	background:	none;
+}
+
+#edit {
+	background:	white;
+}
+
+#show-wrapper {
+	display:		flex;
+	display: -webkit-flex; /* Safari */
+	flex-wrap:		wrap;
+	justify-content:	space-around;
+}
+input[id='save_button'] {
+	margin-top:		20px;
+	outline:		none;
+}
+table input[type='text'] {
+	width:		50px;
+}

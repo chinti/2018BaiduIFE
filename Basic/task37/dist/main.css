@@ -1,0 +1,55 @@
+* {
+	box-sizing:		border-box;
+}
+
+#app{
+	max-width:		1200px;
+	min-width:		800px;
+	margin:			0 auto;
+	border:			1px solid #AAA;
+	padding:		20px;
+	border-radius:	5px;
+	box-shadow:		1px 1px 1px 1px #DDD,
+					-1px 1px 1px 1px #DDD;
+	text-align:		center;				
+}
+table {
+	border:		0px solid #DDD;
+	border-width:	0 1px 1px 0 ;
+	border-spacing:	0px;
+	width:			100%;
+	margin-top:		5px;
+}
+th,td {
+	border:		0px solid #DDD;
+	border-width:	1px 0 0 1px;
+	padding:	3px;
+	text-align:	center;
+
+}
+tbody td:hover {
+	background:	url(data:image/svg+xml;base64,77u/PHN2ZyB3aWR0aD0iNTBweCIgaGVpZ2h0PSI1MHB4IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+DQk8bGluZSB4MSA9ICcwJyB5MSA9ICczNScgeDIgPSAnMi42JyB5MiA9ICcyNScgc3R5bGUgPSAnc3Ryb2tlOiBibGFjazsgc3Ryb2tlLXdpZHRoOjEnLz4NCTxsaW5lIHgxID0gJzAnIHkxID0gJzM1JyB4MiA9ICcxMCcgeTIgPSAnMzIuNCcgc3R5bGUgPSAnc3Ryb2tlOiBibGFjazsgc3Ryb2tlLXdpZHRoOjEnLz4NCTxsaW5lIHgxID0gJzIuNicgeTEgPSAnMjUnIHgyID0gJzEwJyB5MiA9ICczMi40JyBzdHlsZSA9ICdzdHJva2U6IGJsYWNrOyBzdHJva2Utd2lkdGg6MScvPg0JPGxpbmUgeDEgPSAnMi42JyB5MSA9ICcyNScgeDIgPSAnMjMuMicgeTIgPSAnMy44JyBzdHlsZSA9ICdzdHJva2U6IGJsYWNrOyBzdHJva2Utd2lkdGg6MScvPg0JPGxpbmUgeDEgPSAnMTAnIHkxID0gJzMyLjQnIHgyID0gJzMxLjInIHkyID0gJzExLjInIHN0eWxlID0gJ3N0cm9rZTogYmxhY2s7IHN0cm9rZS13aWR0aDoxJy8+DQk8bGluZSB4MSA9ICcyMy4yJyB5MSA9ICczLjgnIHgyID0gJzMxLjInIHkyID0gJzExLjInIHN0eWxlID0gJ3N0cm9rZTogYmxhY2s7IHN0cm9rZS13aWR0aDoxJy8+DQk8bGluZSB4MSA9ICc1JyB5MSA9ICcyNy40JyB4MiA9ICcyNS42JyB5MiA9ICc2LjInIHN0eWxlID0gJ3N0cm9rZTogYmxhY2s7IHN0cm9rZS13aWR0aDoxJy8+DQk8bGluZSB4MSA9ICc3LjYnIHkxID0gJzMwJyB4MiA9ICcyOC42JyB5MiA9ICc4LjgnIHN0eWxlID0gJ3N0cm9rZTogYmxhY2s7IHN0cm9rZS13aWR0aDoxJy8+DTwvc3ZnPg==) no-repeat;
+	background-position:		0% 0%;
+	background-size:			20px;
+}
+tbody td[rowspan]:hover,tbody td[rowspan]+td:hover,tbody td:nth-child(1):hover {
+	background:	none;
+}
+
+#edit {
+	background:	white;
+}
+
+#show-wrapper {
+	display:		flex;
+	display: -webkit-flex; /* Safari */
+	flex-wrap:		wrap;
+	justify-content:	space-around;
+}
+input[id='save_button'] {
+	margin-top:		20px;
+	outline:		none;
+}
+table input[type='text'] {
+	width:		50px;
+}
