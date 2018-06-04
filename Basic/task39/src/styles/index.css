@@ -1,0 +1,78 @@
+﻿* {
+	box-sizing:		border-box;
+}
+
+#app{
+	max-width:		1200px;
+	min-width:		800px;
+	margin:			0 auto;
+	border:			1px solid #AAA;
+	padding:		5px;
+	border-radius:	5px;
+	box-shadow:		1px 1px 1px 1px #DDD,
+					-1px 1px 1px 1px #DDD;
+	text-align:		center;				
+}
+table {
+	border:		0px solid #DDD;
+	border-width:	0 1px 1px 0 ;
+	border-spacing:	0px;
+	width:			100%;
+}
+th,td {
+	border:		0px solid #DDD;
+	border-width:	1px 0 0 1px;
+	padding:	3px;
+	text-align:	center;
+}
+
+#table-wrapper {
+	flex:		5;
+}
+#wrapper {
+	display:	flex;
+	text-align:	center;
+}
+
+#radio-wrapper {
+	//height:		200px;
+	flex:		100px 0;
+}
+
+#region-radio-wrapper,#product-radio-wrapper {
+	display:	flex;
+	display-direction:	column;
+	flex-wrap:	wrap;
+	width:		100px;
+	padding:	5px;
+	border-bottom:		1px solid #DDD;
+}
+#wrapper #radio-wrapper input {
+	margin-top:	10px;
+}
+#wrapper #table-wrapper input[type='number'] {
+	width:		100px;
+}
+#wrapper #edit input[id = 'check'] {
+	background:	center 100% url(../asserts/check.png) no-repeat;
+	border:		none;
+	width:		20px;
+	outline:	none;
+}
+#wrapper #edit input[id = 'cancel'] {
+	background:	center 100% url(../asserts/cancel.png) no-repeat;
+	border:		none;
+	width:		20px;
+	outline:	none;
+}
+tbody td:hover {
+	background: center right url('../asserts/pencil.png') no-repeat;
+	background-size:			10px;
+}
+tbody td[rowspan]:hover,tbody td[rowspan]+td:hover,tbody td:nth-child(1):hover {
+	background:	none;
+}
+
+#edit {
+	background:	white;
+}
