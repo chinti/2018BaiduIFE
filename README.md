@@ -23,6 +23,7 @@
 - [第三十一到第三十三天：我是精明的小卖家（一）](./Basic/task31/dist/index.html)
 - [第三十四天到第三十六天：我是精明的小卖家（二）](./Basic/task34/dist/index.html)
 - [第三十七天到第三十八天：我是精明的小卖家（三）](./Basic/task37/dist/index.html)
+- [第三十九天到第四十一天：我是精明的小卖家（四）](./Basic/task39/dist/index.html)
 
 #### MVVM学院
 - [1.2 用webpack4.0快速搭建开发san helloworld](./MVVM/1.2/dist/index.html)（重新做）
