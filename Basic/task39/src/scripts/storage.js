@@ -67,7 +67,7 @@ function pushCheckboxtoState(list,cp,cr) {				//将改变的checkbox的值写入
 	}
 	t1 = t1.join('');
 	t2 = t2.join('');
-	history.pushState('#'+t1+'2'+t2,null,'#'+t1+'2'+t2);	
+	history.replaceState('#'+t1+'2'+t2,null,'#'+t1+'2'+t2);	
 	//window.onpopstate();
 }
 export {prepareStorageButton,getState,pushCheckboxtoState}
