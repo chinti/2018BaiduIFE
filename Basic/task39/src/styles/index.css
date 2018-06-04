@@ -76,3 +76,33 @@ tbody td[rowspan]:hover,tbody td[rowspan]+td:hover,tbody td:nth-child(1):hover {
 #edit {
 	background:	white;
 }
+#bar-wrapper{
+	position:	relative;
+}
+#bar-wrapper svg {
+	z-index:	2;
+}
+.bar-cover {
+	position:		absolute;
+	width:			7.5%;
+	height:			90%;
+	top:			5%;
+	left:			5%;
+	background:		rgb(0,0,0,0.5);
+	z-index:		1;
+	opacity:		0;
+}
+.bar-cover:hover {
+	opacity:		0.5;
+}
+#bar-list {
+	position:		absolute;
+	width:			150px;
+	top:			5%;
+	left:			5%;
+	background:		rgb(0,0,0,0.5);
+	border-radius:	5px;
+	z-index:		1;
+	color:			white;
+	//opacity:		0;
+}

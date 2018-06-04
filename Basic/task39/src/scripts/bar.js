@@ -1,9 +1,15 @@
-﻿let color = ['#60ACFC','#32D3EB','#5BC49F'];
+﻿import {getAllTableList} from './table.js'
+let color = ['#60ACFC','#32D3EB','#5BC49F'];
 function prepareSVG() {
 	var bar_wrapper = document.querySelector('#app #bar-wrapper');
 	bar_wrapper.style.height = "400px";
-	var svg = '<svg width="95%" height="400px" version="1.1" xmlns="http://www.w3.org/2000/svg">';
-	svg+= '</svg>';
+	//bar_wrapper.style.position = "relative";
+	var svg = '<svg width="100%" height="400px" version="1.1" xmlns="http://www.w3.org/2000/svg">';
+	svg+= '</svg><div>';
+	for(let i = 0 ; i<12 ; i++) {
+		svg+='<div class = "bar-cover"></div>';
+	}
+	svg+= '</div><div id = "bar-list"></div>'
 	bar_wrapper.innerHTML = svg;
 }
 
@@ -60,4 +66,39 @@ function drawProductColor(prod) {
 	return result;
 }
 
-export {drawBar,prepareSVG}
+function prepareSVGEvent(data) {			//显示遮罩层和详细信息
+	var svg = document.querySelector('#app #bar-wrapper');
+	var cover = document.querySelectorAll('#app #bar-wrapper .bar-cover');
+	var list = document.querySelector('#app #bar-wrapper #bar-list');
+	for(let i = 0;i<cover.length;i++) {		//本来想监听mouseover的，但是实在解决不了鼠标移速过快造成的不响应
+		cover[i].style.left =	5+i*7.5+'%';
+	}
+	svg.onmousemove = function(e) {
+		var data = getAllTableList();
+		var x = e.pageX;
+		var y = e.pageY;
+		var show_y = y-svg.offsetTop;
+		var show_x = x-svg.offsetLeft;
+		var wid = svg.offsetWidth;
+		var index = Math.floor(((show_x)-wid*0.05)/(wid*0.9/12));
+		var result = '';
+		if(index>=0&&index<12) {
+			for(let i = 0 ; i < data.length ;i++) {
+				result += '<p>'+data[i]['product']+','+data[i]['region']+':'+data[i]['sale'][index]+'</p>'
+			}
+		}
+		list.innerHTML = result;
+		if(show_x / wid < 0.5) {
+			list.style.left = (show_x+20)+'px';
+		} else {
+			list.style.left = (show_x-20-150)+'px';
+		}
+		
+		list.style.top = (show_y-data.length*40)+'px';
+	}
+	svg.onmouseleave = function(e) {
+		list.innerHTML = '';
+	}
+}
+
+export {drawBar,prepareSVG,prepareSVGEvent}
