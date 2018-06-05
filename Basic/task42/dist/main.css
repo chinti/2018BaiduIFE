@@ -1,0 +1,16 @@
+* {
+	box-sizing:		border-box;
+}
+
+#app{
+	max-width:		1200px;
+	min-width:		800px;
+	margin:			0 auto;
+	border:			1px solid #AAA;
+	padding:		5px;
+	border-radius:	5px;
+	box-shadow:		1px 1px 1px 1px #DDD,
+					-1px 1px 1px 1px #DDD;
+	text-align:		center;				
+}
+
