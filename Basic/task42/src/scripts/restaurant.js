@@ -1,8 +1,8 @@
 ﻿//这里开始应该是ES5的写法吧
 function Restaurant(arr) {				//餐厅类
-	this.cash = arr['cash'];
-	this.seats = arr['seats'];
-	this.staff = arr['staff'];
+	this.cash = arr['cash']||0;
+	this.seats = arr['seats']||0;
+	this.staff = arr['staff']||[];
 }
 
 Restaurant.prototype.hire = function(obj) {	//餐厅类 招聘职员
@@ -10,14 +10,19 @@ Restaurant.prototype.hire = function(obj) {	//餐厅类 招聘职员
 }
 
 Restaurant.prototype.fire = function(obj) {	//餐厅类 解雇职员
+	var arr = [];							//直接使用splice删除，会使hire的结果也出问题
 	for(let i in this.staff) {
-		if(this.staff[i] == obj) {
-			this.staff.splice(i,1);
+		if(this.staff[i].id != obj.id) {
+			arr.push(this.staff[i]);
 		}
 	}
+	this.staff = arr;
 }
 
-function Staff(name,salary) {		//职员类，我在思考ID是自动生成还是怎么搞，先不放了
+var id = 1;							//id
+
+function Staff(name,salary) {		//职员类
+	this.id = id++;
 	this.name = name;
 	this.salary = salary;
 }
