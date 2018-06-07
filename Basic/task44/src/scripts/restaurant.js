@@ -91,9 +91,13 @@ var singleCook = (function(){               //厨师类单例，继承自职员�
     extend(Cook,Staff);             //继承
     Cook.prototype.work = function(order) {
         if(instance != null) {
-            console.log('厨师'+this.name+'烹饪完菜品'+order.name);
+            console.log('厨师'+this.name+'烹饪菜品'+order.name);
             var newWaiter = new singleWaiter.create;
+            console.log('=======烹饪中======')
+            delay(1000);
+            console.log('厨师'+this.name+'烹饪完成');
             newWaiter.work();
+            
         //    Cook.prototype.finish();
         }
     }
@@ -122,6 +126,8 @@ Customer.prototype.order = function(obj) {
     newWaiter.work(obj);
 }
 Customer.prototype.eat = function() {
+    console.log('=======吃饭中======')
+    delay(1000);
 	console.log('顾客吃完离开');
 }
 
@@ -161,21 +167,37 @@ function toTest() {
     ]);
     var newCook = singleCook.create('Tony','10000');        //添加厨师单例
     var newWaiter = singleWaiter.create('Ben','9000');       //添加服务员单例
-    for(let i = 0 ; i < 10 ; i++ ){                    //往队列里塞10个排排坐的客人     
+    for(let i = 0 ; i < 5 ; i++ ){                    //往队列里塞满排排坐的客人     
         queue.push(new Customer());
     }
     ifeRestaurant.hire(newCook);
     ifeRestaurant.hire(newWaiter);
     console.log('假定队伍里有'+queue.length+"个客人");
-    while(queue.length) {                           //10个客人依次就餐，每次只能点一个菜
+    delay(500);
+    console.log('餐馆开张啦！');
+    delay(500);
+    while(queue.length) {                           //客人依次就餐，每次只能点一个菜
         var customer = queue[0];
         ifeRestaurant.seats -= 1;
         customer.order(ifeMenu.getRandom());
         ifeRestaurant.seats += 1;
         queue.shift();
+        delay(1000);
     }  
 }
 
+function delay(time) {
+    var now = new Date();
+    var exit = now.getTime()+time;
+    var flag = true;
+    //console.log(exit)
+    while(flag) {
+        now = new Date();
+        if(now.getTime()>exit) {
+            flag = false;
+        }
+    }
+}
 
 
 export {toTest}
