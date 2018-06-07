@@ -173,17 +173,22 @@ function toTest() {
     ifeRestaurant.hire(newCook);
     ifeRestaurant.hire(newWaiter);
     console.log('假定队伍里有'+queue.length+"个客人");
-    delay(500);
-    console.log('餐馆开张啦！');
-    delay(500);
-    while(queue.length) {                           //客人依次就餐，每次只能点一个菜
-        var customer = queue[0];
-        ifeRestaurant.seats -= 1;
-        customer.order(ifeMenu.getRandom());
-        ifeRestaurant.seats += 1;
-        queue.shift();
+    var button = document.querySelector('#app input');
+    //console.log(button)
+    button.onclick = function() {
+        console.log('餐馆开张啦！');
         delay(500);
-    }  
+        while(queue.length) {                           //客人依次就餐，每次只能点一个菜
+            var customer = queue[0];
+            ifeRestaurant.seats -= 1;
+            customer.order(ifeMenu.getRandom());
+            ifeRestaurant.seats += 1;
+            queue.shift();
+            delay(200);
+        } 
+        console.log('客人没啦');
+    }
+
 }
 
 function delay(time) {
