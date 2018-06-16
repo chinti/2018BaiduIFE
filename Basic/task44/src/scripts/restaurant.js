@@ -94,7 +94,7 @@ var singleCook = (function(){               //厨师类单例，继承自职员�
             console.log('厨师'+this.name+'烹饪菜品'+order.name);
             var newWaiter = new singleWaiter.create;
             console.log('=======烹饪中======')
-            delay(500);
+            //delay(500);
             console.log('厨师'+this.name+'烹饪完成');
             newWaiter.work();
             
@@ -127,7 +127,7 @@ Customer.prototype.order = function(obj) {
 }
 Customer.prototype.eat = function() {
     console.log('=======吃饭中======')
-    delay(500);
+    //delay(500);
 	console.log('顾客吃完离开');
 }
 
@@ -177,14 +177,14 @@ function toTest() {
     //console.log(button)
     button.onclick = function() {
         console.log('餐馆开张啦！');
-        delay(500);
+        //delay(500);
         while(queue.length) {                           //客人依次就餐，每次只能点一个菜
             var customer = queue[0];
             ifeRestaurant.seats -= 1;
             customer.order(ifeMenu.getRandom());
             ifeRestaurant.seats += 1;
             queue.shift();
-            delay(200);
+            //delay(200);
         } 
         console.log('客人没啦');
     }
