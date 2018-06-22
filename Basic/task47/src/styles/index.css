@@ -1,0 +1,88 @@
+﻿* {
+	box-sizing:		border-box;
+}
+
+#app{
+	width:		    1200px;
+	margin:			0 auto;
+	border:			1px solid #AAA;
+	padding:		5px;
+	border-radius:	5px;
+	box-shadow:		1px 1px 1px 1px #DDD,
+					-1px 1px 1px 1px #DDD;
+	text-align:		center;	
+}
+#restaurant-wrapper {
+    width:          1100px;
+    height:         450px;
+    margin:			0 auto;
+    margin-top:     20px;
+    border:			1px solid #DDD;
+    border-radius:	2px 2px 5px 5px;
+    position:       relative;
+    padding:        10px;
+}
+
+#cook-wrapper,#customer-wrapper {
+    width:          300px;
+    height:         200px;
+    border:			1px solid #DDD;
+    border-radius:	5px;
+    display:        flex;
+}
+#customer-wrapper {
+    position:       absolute;
+    top:            225px;
+    right:          10px;
+}
+
+#cook-status-wrapper,#customer-status-wrapper {
+    width:          200px;
+}
+#cook-list-wrapper {
+    width:          100px;
+    border-right:    1px solid #DDD;
+    overflow:       auto;
+}
+#customer-list-wrapper {
+    width:          100px;
+    border-left:    1px solid #DDD;
+    overflow:       auto;
+}
+#waiter-wrapper {
+    width:          200px;
+    border:			1px solid #DDD;
+    border-radius:	5px;
+    position:       absolute;
+    top:            10px;
+    left:           320px;
+    height:         200px;
+    transition:      0.5s all ease;
+}
+
+#customer-list {
+    width:          1100px;
+    min-height:     120px;
+    border:			1px solid #DDD;
+    border-radius:	5px;
+    margin:         0 auto;
+    margin-top:     10px;
+    display:        flex;
+    flex-wrap:      wrap;
+}
+
+#app .customer {
+    width:      100px;
+    height:     100px;
+    margin:     10px;
+    background: center url('../asserts/customer.png') no-repeat;
+    background-size:    100%;
+}
+#customer-dash-list {
+    list-style:    none inside;
+    padding:        0;
+}
+#cook-list {
+    list-style:    none inside;
+    padding:        0;
+}
