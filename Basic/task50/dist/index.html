@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang = 'en'>
+    <head>  
+        <meta charset = 'UTF-8'>
+        <meta name = 'viewport' content = 'width=device-width,initial-scale = 1.0'>
+        <meta http-equiv = "X-UA-Compatible" content = "ie=edge">
+        <title>第五十天到第五十三天：开一家餐厅吧（四）</title>
+    <link href="main.css" rel="stylesheet"></head>
+    <body>
+        <div id = 'app'>
+            <div id = 'header'>
+                <div id = 'title'>
+                    <h1>ifeRestaurant</h1>
+                    <div>
+                        <p>现金数量:<span id = 'cash'></span></p>
+                        <input id = 'open' type = 'button' value = "开始营业">
+                    </div>
+                </div>
+                <div id = 'setting'>
+                    <div>
+                        <label>单位时间(秒):
+                            <span id = 'show_basicTime'></span>
+                            <input type = "number" id = 'input_basicTime'>
+                            <input type = 'button' id = 'button_basicTime' value = '确认'>
+                        </label>
+                    </div>
+                    <div>
+                        <label>雇佣:</label>
+                        <input type = 'button' id = 'add_cook' value = '雇佣新厨师'>
+                        <input type = 'button' id = 'add_waiter' value = '雇佣新侍者'>
+                    </div>
+                </div>
+            </div>
+            <div id = 'out_wrapper'>
+                <div id = 'cook_wrapper'>
+                    <div id = 'many_cook'>
+                    </div>
+                    <div id = 'cook_list_wrapper'>
+                        <p>待做列表:</p>
+                        <ul id = 'cook_list'>
+                        </ul>
+                    </div>
+                </div>
+                <div id = 'hall_wrapper'>
+                    <div id = 'inner_wrapper'>
+                        <div id = 'waiter_wrapper'>
+                        </div>
+                        <div id = 'seat_wrapper'>
+                        </div>
+                    </div>
+                    <div id = 'queue_wrapper'>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <script type="text/javascript" src="./js/bundle.js"></script></body>
+</html>
