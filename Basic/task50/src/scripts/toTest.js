@@ -69,6 +69,7 @@ function toTest() {
     setInterval(function() {Data.updateCustomer();Data.startFire()},500)
     setInterval(function() {Data.comeIntoSeat();},100)
     setInterval(function() {Data.startOrder();Data.startCook();Data.startServe();Data.startEat();},100)
+    //setInterval(function() { console.log(Data.RestaurantData.staff)},1000)
 }
 
 

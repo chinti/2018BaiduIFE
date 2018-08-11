@@ -7,6 +7,7 @@ class Cook extends Staff {
         //this.preList = [];
         this.status = "无";
         this.preWork = "等待工作";      //若为 等待解雇，则在完成工作后解雇
+        this.constructorname = 'Cook';
     }
     startWork() {
         console.log(this.name+'烹饪菜品')

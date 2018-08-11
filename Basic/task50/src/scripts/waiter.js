@@ -6,6 +6,7 @@ class Waiter extends Staff {
         //this.customer = {};
         this.status = '无';                             // 空闲 上菜中
         this.preWork = '等待工作';
+        this.constructorname = 'Waiter';
     }
     startWork() {
         console.log(this.name+'烹饪菜品')

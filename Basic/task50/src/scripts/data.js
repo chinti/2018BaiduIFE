@@ -87,7 +87,7 @@ let Data = {
                             <div id = "customer_status_wrapper">\
                                 <p>顾客状态：<p>\
                                 <p id = "customer-status">'+status+'</p>\
-                                <img src = "src/asserts/customer.png" alt = "customer" height = "100px">\
+                                <div class = "image_Customer"></div>\
                             </div>\
                             <div>\
                                 <ul id = "customer_eatList">'+eatListresult+'\
@@ -120,10 +120,10 @@ let Data = {
         var tcook = [];
         var twaiter = [];
         for(let i = 0; i < this.RestaurantData.staff.length;i++) {
-            if((this.RestaurantData.staff[i]).constructor.name == 'Cook') {
+            if((this.RestaurantData.staff[i]).constructorname == 'Cook') {
                 tcook.push(this.RestaurantData.staff[i]);
             }
-            if((this.RestaurantData.staff[i]).constructor.name == 'Waiter') {
+            if((this.RestaurantData.staff[i]).constructorname == 'Waiter') {
                 twaiter.push(this.RestaurantData.staff[i]);
             }
         }
@@ -137,7 +137,7 @@ let Data = {
                             <div class = "cook_status_wrapper">\
                                 <p>厨师'+this.nowCook[i].name+'状态：</p>\
                                 <p class = "cook_status">'+this.nowCook[i].status+'</p>\
-                                <img src = "./src/asserts/cook.jpg" alt = "" height = "100px"/>\
+                                <div class = "image_Cook"></div>\
                                 <input type = "button" value = "解雇">\
                             </div>\
                         </div>';
@@ -166,7 +166,7 @@ let Data = {
             result2 += '<div class = "one_waiter_wrapper" id = "'+'Waiter_'+this.nowWaiter[i].id+'">\
                             <div class = "waiter_status_wrapper">\
                                 <p class = "waiter_status">侍者'+this.nowWaiter[i].name+'状态：'+this.nowWaiter[i].status+'</p>\
-                                <img src = "./src/asserts/waiter.png" alt = "" height = "60px"/>\
+                                <div class = "image_Waiter"></div>\
                                 <input type = "button" value = "解雇">\
                             </div>\
                         </div>';

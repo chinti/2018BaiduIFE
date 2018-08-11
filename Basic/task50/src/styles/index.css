@@ -164,3 +164,19 @@
     background: center url('../asserts/customer.png') no-repeat;
     background-size:    100%;
 }
+.image_Waiter {
+    background: center url('../asserts/waiter.png') no-repeat;
+    height:     60px;
+    background-size:    30%;
+}
+.image_Cook {
+    background: center url('../asserts/cook.png') no-repeat;
+    height:     100px;
+    background-size:    40%;
+}
+.image_Customer {
+    background: center url('../asserts/customer.png') no-repeat;
+    height:     100px;
+    width:      130px;
+    background-size:    60%;
+}
