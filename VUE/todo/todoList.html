@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang = 'zh-CN'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>todoList</title>
+    <link rel = "stylesheet" href = "node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        .del{
+            text-decoration:    line-through;
+            color:              #ccc!important;
+        }
+    </style>
+</head>
+<body>
+    <div id = "app">
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">
+                TodoList
+              </a>
+            </div>
+          </div>
+        </nav>
+        <div class = "container">
+            <div class = "row">
+                <div class = "col-md-8 col-md-offset-2">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading"><h3 class = "text-default">{{count}}件待完成的事</h3>
+                            <input type = "text" class = "form-control" v-model = "title" @keyup.enter = "add">
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-group">
+                                <li class = "list-group-item" v-for = "(todo,index) in needTodos" @dblclick = "remember(todo)">
+                                    <input type="checkbox" v-model = "todo.isSelected" v-show = "cur != todo">
+                                    <span :class = "todo.isSelected?'del':''" v-show = "cur != todo"> 
+                                        {{todo.title}}
+                                    </span>
+                                    <input type = "text" v-model = "todo.title" v-show = "cur == todo" 
+                                        @keyup.enter = 'cancel' @blur = "cancel" v-focus_a = "cur == todo">
+                                    <button class = "pull-right btn btn-danger btn-xs" 
+                                        @click = "remove(todo)"
+                                    >&times;</button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="panel-footer">
+                            <ul class="nav nav-pills">
+                              <li role="presentation" :class = "{active:hash==='all'}"><a href="#/all">全部</a></li>
+                              <li role="presentation" :class = "{active:hash==='finish'}"><a href="#/finish">已完成</a></li>
+                              <li role="presentation" :class = "{active:hash==='unfinish'}"><a href="#/unfinish">未完成</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+    <script src = "node_modules/vue/dist/vue.js"></script>
+    <script src = "node_modules/axios/dist/axios.js"></script>
+    <script src = "todoList.js"></script>
+</body>
+</html>

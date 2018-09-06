@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang = 'zh-CN'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>simpleTodo</title>
+    
+</head>
+<body>
+    <div id = "app">
+        <input type = "text" v-model = "val" @keyup.ctrl.enter = "add">
+        <ul>
+            <li v-for = "(a,index) in arr">{{a}} <button @click = "remove(index)">删除</button></li>
+        </ul>
+    </div>
+    <script src = "node_modules/vue/dist/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el: "#app",
+            methods:    {
+                add(e) {
+                    if(e.keyCode === 13) {
+                        this.arr.unshift(this.val);
+                        this.val = '';
+                    }   
+                },
+                remove(i) {
+                    this.arr = this.arr.filter((item,index) => index!== i)
+                }
+            },
+            data:   {
+                arr:    [],
+                val:    '',
+            }
+        })
+    </script>
+</body>
+</html>
