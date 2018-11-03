@@ -77,7 +77,6 @@
 		border-radius:		5px;
 		box-shadow:			1px 1px 1px 1px #DDD,
 							-1px 1px 1px 1px #DDD;
-		
 	}
 	input {
 		font-size:			1.1em;

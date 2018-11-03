@@ -1,0 +1,92 @@
+﻿<template>
+    <div id="sanInput">
+		<input 
+			type = '{{ type }}' 
+			value = '{= value =}' 
+			placeholder = '{{ placeholder }}'
+			disabled = '{{ disabled }}'
+			readonly = '{{ readonly }}'
+			on-input = 'handleInput'
+			on-focus = 'handleFocus'
+			on-blur = 'handleBlur'
+		>
+		<p s-if = "{{isError}}" class = "{{errormessage}}" >test{{errorMessage}}</p>
+	</div>
+</template>
+	
+<script>
+	import san,{DataTypes} from 'san';
+	export default {
+		initData() {
+			return {
+				type :	'',
+				value : '',
+				//placeholder : 'test',
+				placeholder : '',
+				disabled:	false,
+				readonly:	false,
+				isError:	false,
+			}
+		},
+		inited() {			//组件加载后，设置值
+			
+		},
+		trimWhitespace:		'all',//去除前后空白符
+		handleInput(e) {				//处理输入事件
+			//console.log('test1');
+			
+		},
+		handleFocus(e) {				//处理焦点事件
+			//console.log('test2');
+		},
+		handleBlur(e) {					//处理失焦事件
+			if(this.data.get('readonly') == true) {return;}
+			let	value = this.trim(this.data.get('value')) ;
+			console.log(value);
+			if(value.length !== 0 && value.length < 6){
+				this.data.set("isError",true);
+				this.data.set('errorMessage','太短');
+			}
+			
+		},
+		trim:	function(data) {
+			var result = "";
+			var string = data ;
+			var i = 0,j = string.length;
+			while((string.indexOf(" ",i) == i||string.indexOf("　",i) == i)) {i++;}
+			while((string.lastIndexOf(" ",j-1) == j-1)||(string.lastIndexOf("　",j-1) == j-1)) {j--;}
+			string = string.slice(i,j);
+			result = string;
+			return result;
+		},
+		check: {
+			email: 	function(str) {
+				
+			},
+			password:	function(str) {
+				
+			}
+		}	
+	}
+</script>
+
+<style>
+	* {
+		box-sizing:		border-box;
+	}
+	#sanInput {
+		position:		relative;
+	}
+	#sanInput input {
+		padding:		8px;
+		font-size:		12px;
+		width:			250px;
+		margin:			10px;
+	}
+	#sanInput p {
+		position:		absolute;
+		top:			0px;
+		left:			300px;
+		color:			#ff7c7c;
+	}
+</style>

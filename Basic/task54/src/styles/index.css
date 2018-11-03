@@ -1,0 +1,15 @@
+﻿* {
+    box-sizing: border-box;
+}
+#app > h1 {
+    margin:     0 auto;
+    width:      200px;
+    text-align: center;
+}
+#app > #container {
+    background-color:   	#FFFACD;
+    width:          800px;
+    height:         600px;
+    margin:         0 auto;
+    text-align:     center;
+}

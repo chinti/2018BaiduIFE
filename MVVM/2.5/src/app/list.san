@@ -1,0 +1,23 @@
+﻿<template>
+    <div id="list">
+		<div id = 'san_Input'>
+			<san-input type = 'email' placeholder = '请输入文字'></san-input>
+			<san-input type = 'password' placeholder = '请输入文字'></san-input>
+		</div>
+	</div>
+</template>
+	
+<script>
+	import san from 'san'
+	import sanInput from './input'
+
+	export default {
+		components: {
+			'san-input' :	sanInput,
+		}
+	}
+</script>
+
+<style>
+
+</style>

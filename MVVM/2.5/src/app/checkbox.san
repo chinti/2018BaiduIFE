@@ -1,0 +1,18 @@
+﻿<template>
+    <div id="san-checkbox">
+			
+	</div>
+</template>
+	
+<script>
+	import san from 'san'
+	
+
+	export default {
+		
+	}
+</script>
+
+<style>
+
+</style>
